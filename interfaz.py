@@ -44,10 +44,9 @@ class Aplicacion:
     	selectorKmers = Scale(self.ventana1, from_=1, to=4,orient=HORIZONTAL, bg=self.fondoComponentes,variable=self.var).place(x=80,y=25)
     
     def siguiente(self):
-    	self.ventana2=Tk()
-    	self.ventana2.title("Imagenes") 
-    	kmers= self.var.get()
-    	print(kmers)   
+        kmers= self.var.get()
+        archivo.hacerImagen(kmers)
+    	  
 
 
     def salir(self):

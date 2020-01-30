@@ -7,7 +7,7 @@ from imagen import *
 
 class Archivo:
     def __init__(self):
-        print("hola")
+        self.datos = ""
 
     def recuperar(self):
         nombrearch=fd.askopenfilename(initialdir = "/home/juancho270/escritorio",title = "Seleccione archivo",filetypes = (("fasta files","*.fasta"),("todos los archivos","*.*")))
@@ -15,14 +15,16 @@ class Archivo:
             archi1=open(nombrearch, "r", encoding="utf-8")
             contenido=archi1.read()
             contenido2  ="".join(contenido.split("\n")[ 1 :])
-            datos= self.quitarRepeticiones(contenido2,'N')
+            self.datos= self.quitarRepeticiones(contenido2,'N')
             archi1.close()
-            f2 = imagen.count_kmers(datos,3)
-            f2_prob = imagen.probabilities(datos,f2,3)
-            chaos_f2 = imagen.chaos_game_representation(f2_prob,3)
-            pylab.title('Chaos game representation for 3-mers')
-            pylab.imshow(chaos_f2, interpolation='nearest', cmap=cm.gray_r)
-            pylab.show()
+
+    def hacerImagen(self,kmers):
+        f2 = imagen.count_kmers(self.datos,kmers)
+        f2_prob = imagen.probabilities(self.datos,f2,kmers)
+        chaos_f2 = imagen.chaos_game_representation(f2_prob,kmers)
+        pylab.title('Chaos game representation for' + str(kmers) + '-mers')
+        pylab.imshow(chaos_f2, interpolation='nearest', cmap=cm.gray_r)
+        pylab.show()
 
     def quitarRepeticiones(self,unaCadena,unaLetra):
         cadena=""
