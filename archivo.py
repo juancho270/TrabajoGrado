@@ -5,6 +5,7 @@ from tkinter import filedialog as fd
 from tkinter import messagebox as mb
 from imagen import *
 
+
 class Archivo:
     def __init__(self):
         self.datos = ""
@@ -17,6 +18,8 @@ class Archivo:
             contenido2  ="".join(contenido.split("\n")[ 1 :])
             self.datos= self.quitarRepeticiones(contenido2,'N')
             archi1.close()
+
+            
 
     def hacerImagen(self,kmers):
         f2 = imagen.count_kmers(self.datos,kmers)
