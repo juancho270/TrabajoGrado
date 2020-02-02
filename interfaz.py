@@ -3,6 +3,7 @@ import sys
 from tkinter import filedialog as fd
 from tkinter import messagebox as mb
 from archivo import *
+from tkinter import messagebox
 
 
 class Aplicacion:
@@ -57,6 +58,9 @@ class Aplicacion:
         if self.carga:
             kmers= self.var.get()
             archivo.hacerImagen(kmers)
+        else:
+        	messagebox.showinfo(message="Por favor cargue un archivo en formato fasta", title="Archivo no Cargado")
+
     	  
 
 

@@ -23,7 +23,11 @@ class Archivo:
 
     def hacerImagen(self,kmers):
         f2 = imagen.count_kmers(self.datos,kmers)
+        print("contadores: \n")
+        print(f2)
         f2_prob = imagen.probabilities(self.datos,f2,kmers)
+        print("probabilidad: \n")
+        print(f2_prob)
         chaos_f2 = imagen.chaos_game_representation(f2_prob,kmers)
         pylab.title('Chaos game representation for' + str(kmers) + '-mers')
         pylab.imshow(chaos_f2, interpolation='nearest', cmap=cm.gray_r)
