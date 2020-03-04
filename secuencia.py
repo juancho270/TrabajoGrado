@@ -1,31 +1,43 @@
 import pandas as pd
+import os
 
-file = "/home/juancho270/Descargas/GCA_000005845.2_ASM584v2_feature_table.txt"
-datos = "/home/juancho270/Descargas/GCA_000005845.2_ASM584v2_genomic.fna"
-archi1=open(datos, "r", encoding="utf-8")
-data=archi1.read()
+class Secuencia:
+    def __init__(self,tabla,secuencia):
+        self.data=secuencia
+        self.df = tabla
+        self.codificante = ""
+        self.no_codificante = ""
+        self.columnas = len(self.df.index)
 
-df = pd.read_csv(file,sep='\t')
-dp = pd.DataFrame(df,columns = list(df))
+    def separar(self):
+    	for i in range(len(self.df.index)):
+    		if self.df['# feature'][i] == 'gene':
+    			if self.df['strand'][i] == '+':
+    				self.codificante = self.codificante + (self.data[self.df['start'][i]: self.df['end'][i]])
+    			else:
+    				self.codificante = self.codificante + (self.data[self.df['start'][i]: self.df['end'][i]])[:: - 1 ]
+    			if i != len(self.df.index):
+    				if self.df['strand'][i] == '+':
+    					self.no_codificante = self.no_codificante + (self.data[self.df['end'][i]:self.df['start'][i+1]])
+    				else:
+    					self.no_codificante = self.no_codificante + (self.data[self.df['end'][i]:self.df['start'][i+1]])[:: - 1 ]
+    			else:
+    				if self.df['end'][i] != len(self.data):
+    					if self.df['strand'][i] == '+':
+    						self.no_codificante = self.no_codificante + (self.data[self.df['end'][i]:len(self.data)])
+    					else:
+    						self.no_codificante = self.no_codificante + (self.data[self.df['end'][i]:len(self.data)])
+    	self.almacenar()
 
-codificante = ""
-no_codificante = ""
-
-columnas = len(df.index)
-hola = "hola mundo"
-
-for i in range(len(df.index)):
-	if df['# feature'][i] == 'gene':
-		codificante = codificante + (data[df['start'][i]: df['end'][i]])
-		if i != len(df.index):
-			no_codificante = no_codificante + (data[df['end'][i]:df['start'][i+1]])
-		else:
-			if df['end'][i] != len(data):
-				no_codificante = no_codificante + (data[df['end'][i]:len(data)])
+    def almacenar(self):
+    	file = open("/home/usuario/Escritorio/TrabajoGrado/codificante.fasta","w")
+    	file.write(self.codificante)
+    	file2 = open("/home/usuario/Escritorio/TrabajoGrado/no_codificante.fasta","w")
+    	file2.write(self.no_codificante)
+    	file.close()
+    	file2.close()
 
 
 
-print("codificante" + codificante)
-print("no codificante" + no_codificante)
 
 
