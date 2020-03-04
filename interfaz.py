@@ -20,7 +20,6 @@ class Aplicacion:
         self.carga = False
         miFrame = Frame()
         miFrame.pack(fill = "both", expand = "True")
-        miFrame.config(bg = self.fondo)
         miFrame.config(width="450", height= "300")
         miFrame.config(bd=10)
         miFrame.config(relief = "groove")
