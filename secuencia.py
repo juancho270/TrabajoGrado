@@ -30,9 +30,9 @@ class Secuencia:
     	self.almacenar()
 
     def almacenar(self):
-    	file = open("/home/usuario/Escritorio/TrabajoGrado/codificante.fasta","w")
+    	file = open("codificante.fasta","w")
     	file.write(self.codificante)
-    	file2 = open("/home/usuario/Escritorio/TrabajoGrado/no_codificante.fasta","w")
+    	file2 = open("no_codificante.fasta","w")
     	file2.write(self.no_codificante)
     	file.close()
     	file2.close()
