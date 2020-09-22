@@ -6,6 +6,7 @@ from tkinter import messagebox as mb
 from imagen import *
 import pandas as pd
 from secuencia import *
+from PyQt5.QtWidgets import *
 
 
 class Archivo:
@@ -17,27 +18,27 @@ class Archivo:
         self.cargaDatos = False
         self.cargaTabla = False
 
-    def recuperar(self):
-        nombrearch = fd.askopenfilename(initialdir="/home/juancho270/escritorio", title="Seleccione archivo",
-                                        filetypes=(("fasta files", "*.fasta"), ("todos los archivos", "*.*")))
+    def recuperar(self, ventana):
+        nombrearch = QFileDialog.getOpenFileName(
+            ventana, 'Open File', "/home", " (*.txt *.fasta )")
         if nombrearch != '':
-            archi1 = open(nombrearch, "r", encoding="utf-8")
+            archi1 = open(nombrearch[0], "r", encoding="utf-8")
             contenido = archi1.read()
             contenido2 = "".join(contenido.split("\n")[1:])
             self.datos = self.quitarRepeticiones(contenido2, 'N')
             archi1.close()
             self.cargaDatos = True
         self.llamar()
-        return nombrearch
+        return nombrearch[0]
 
-    def recuperarTabla(self):
-        nombrearch = fd.askopenfilename(initialdir="/home/juancho270/escritorio", title="Seleccione Tabla",
-                                        filetypes=(("archivo txt", "*.txt"), ("todos los archivos", "*.*")))
+    def recuperarTabla(self, ventana):
+        nombrearch = QFileDialog.getOpenFileName(
+            ventana, 'Open File', "/home", " (*.txt *.fasta )")
         if nombrearch != '':
-            self.tabla = pd.read_csv(nombrearch, sep='\t')
+            self.tabla = pd.read_csv(nombrearch[0], sep='\t')
             self.cargaTabla = True
         self.llamar()
-        return nombrearch
+        return nombrearch[0]
 
     def llamar(self):
         if self.cargaTabla and self.cargaDatos:
