@@ -1,5 +1,6 @@
 import sys
 from Gui import *
+from eventGui2 import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from archivo import archivo
@@ -15,8 +16,26 @@ class Ventana(QWidget):
         self.ui.btnTabla.clicked.connect(self.tabla)
         self.ui.btnCodificante.clicked.connect(self.codificante)
         self.ui.btnNoCodificante.clicked.connect(self.noCodificante)
+        self.ui.btnNext.clicked.connect(self.abrirImg)
         self.carga = False
         self.cargaTabla = False
+        self.imagenCod = False
+        self.imagenNoCod = False
+
+    def abrirImg(self):
+        if self.carga and self.cargaTabla and self.imagenCod and self.imagenNoCod:
+            self.ventana = Ventana2()
+            self.ventana.show()
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+
+            msg.setText("No se han generado las imagenes")
+            msg.setInformativeText(
+                "Se deben generar las imagenes y estas se guardaran automaticamente o podras seleccionar donde guardarlas")
+            msg.setWindowTitle("Error")
+            retval = msg.exec_()
+            print("value of pressed message box button:", retval)
 
     def tabla(self):
         ruta = archivo.recuperarTabla(self)
@@ -32,6 +51,7 @@ class Ventana(QWidget):
         if self.carga and self.cargaTabla:
             kmers = self.ui.NoKmers.text()
             archivo.hacerImagenCodificante(int(kmers))
+            self.imagenCod = True
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -47,6 +67,7 @@ class Ventana(QWidget):
         if self.carga and self.cargaTabla:
             kmers = self.ui.NoKmers.text()
             archivo.hacerImagenNoCodificante(int(kmers))
+            self.imagenNoCod = True
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)

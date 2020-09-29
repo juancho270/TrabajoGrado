@@ -7,6 +7,8 @@ from imagen import *
 import pandas as pd
 from secuencia import *
 from PyQt5.QtWidgets import *
+from pylab import *
+import matplotlib.pyplot as plt
 
 
 class Archivo:
@@ -20,7 +22,7 @@ class Archivo:
 
     def recuperar(self, ventana):
         nombrearch = QFileDialog.getOpenFileName(
-            ventana, 'Open File', "/home", " (*.txt *.fasta )")
+            ventana, 'Open File', "", " (*.txt *.fasta )")
         if nombrearch != '':
             archi1 = open(nombrearch[0], "r", encoding="utf-8")
             contenido = archi1.read()
@@ -33,7 +35,7 @@ class Archivo:
 
     def recuperarTabla(self, ventana):
         nombrearch = QFileDialog.getOpenFileName(
-            ventana, 'Open File', "/home", " (*.txt *.fasta )")
+            ventana, 'Open File', "", " (*.txt *.fasta )")
         if nombrearch != '':
             self.tabla = pd.read_csv(nombrearch[0], sep='\t')
             self.cargaTabla = True
@@ -55,7 +57,6 @@ class Archivo:
         contenido3 = archi3.read()
         self.no_codificante = contenido3
         archi3.close()
-        print("aqui" + contenido)
 
     def hacerImagenCodificante(self, kmers):
         f2 = imagen.count_kmers(self.codificante, kmers)
@@ -65,10 +66,11 @@ class Archivo:
         print("probabilidad: \n")
         print(f2_prob)
         chaos_f2 = imagen.chaos_game_representation(f2_prob, kmers)
-        pylab.title(
-            'Representacion del juego del caos para secuencia codificante y ' + str(kmers) + '-mers')
-        pylab.imshow(chaos_f2, interpolation='nearest', cmap=cm.gray_r)
-        pylab.show()
+        plt.imshow(chaos_f2, interpolation='nearest', cmap=cm.gray_r)
+        plt.axis('off')
+        plt.savefig("Codificante.jpg", bbox_inches='tight',
+                    pad_inches=0, dpi=300)
+        plt.show()
 
     def hacerImagenNoCodificante(self, kmers):
         f2 = imagen.count_kmers(self.no_codificante, kmers)
@@ -78,10 +80,11 @@ class Archivo:
         print("probabilidad: \n")
         print(f2_prob)
         chaos_f2 = imagen.chaos_game_representation(f2_prob, kmers)
-        pylab.title(
-            'Representacion del juego del caos para secuencia no codificante y ' + str(kmers) + '-mers')
-        pylab.imshow(chaos_f2, interpolation='nearest', cmap=cm.gray_r)
-        pylab.show()
+        plt.imshow(chaos_f2, interpolation='nearest', cmap=cm.gray_r)
+        plt.axis('off')
+        plt.savefig("noCodificante.jpg", bbox_inches='tight',
+                    pad_inches=0, dpi=300)
+        plt.show()
 
     def quitarRepeticiones(self, unaCadena, unaLetra):
         cadena = ""

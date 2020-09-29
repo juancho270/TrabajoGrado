@@ -87,6 +87,12 @@ class Ui_Form(object):
         self.btnNoCodificante = QtWidgets.QPushButton(self.groupBox)
         self.btnNoCodificante.setGeometry(QtCore.QRect(110, 30, 91, 31))
         self.btnNoCodificante.setObjectName("btnNoCodificante")
+        self.btnNext = QtWidgets.QPushButton(Form)
+        self.btnNext.setGeometry(QtCore.QRect(490, 270, 91, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.btnNext.setFont(font)
+        self.btnNext.setObjectName("btnNext")
 
         self.retranslateUi(Form)
         self.btnSalir.clicked.connect(Form.close)
@@ -106,6 +112,7 @@ class Ui_Form(object):
         self.groupBox.setTitle(_translate("Form", "Generar Imagen"))
         self.btnCodificante.setText(_translate("Form", "Codificante"))
         self.btnNoCodificante.setText(_translate("Form", "No Codificante"))
+        self.btnNext.setText(_translate("Form", "Siguiente"))
 
 
 if __name__ == "__main__":
