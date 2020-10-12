@@ -1,43 +1,108 @@
 import pandas as pd
 import os
 
+
 class Secuencia:
-    def __init__(self,tabla,secuencia):
-        self.data=secuencia
+    def __init__(self, tabla, secuencia, nombre):
+        self.data = secuencia
         self.df = tabla
+        self.nombreArchivo = nombre
         self.codificante = ""
         self.no_codificante = ""
         self.columnas = len(self.df.index)
 
     def separar(self):
-    	for i in range(len(self.df.index)):
-    		if self.df['# feature'][i] == 'gene':
-    			if self.df['strand'][i] == '+':
-    				self.codificante = self.codificante + (self.data[self.df['start'][i]: self.df['end'][i]])
-    			else:
-    				self.codificante = self.codificante + (self.data[self.df['start'][i]: self.df['end'][i]])[:: - 1 ]
-    			if i != len(self.df.index):
-    				if self.df['strand'][i] == '+':
-    					self.no_codificante = self.no_codificante + (self.data[self.df['end'][i]:self.df['start'][i+1]])
-    				else:
-    					self.no_codificante = self.no_codificante + (self.data[self.df['end'][i]:self.df['start'][i+1]])[:: - 1 ]
-    			else:
-    				if self.df['end'][i] != len(self.data):
-    					if self.df['strand'][i] == '+':
-    						self.no_codificante = self.no_codificante + (self.data[self.df['end'][i]:len(self.data)])
-    					else:
-    						self.no_codificante = self.no_codificante + (self.data[self.df['end'][i]:len(self.data)])
-    	self.almacenar()
+        tablaCromosoma = self.filtrarTabla().reset_index(drop=True)
+
+        for i in range(len(tablaCromosoma.index)):
+            if i == 0:
+                if tablaCromosoma['start'][i] == 0 or tablaCromosoma['start'][i] == 1:
+                    if tablaCromosoma['strand'][i] == '+':
+                        self.codificante = self.codificante + \
+                            (self.data[tablaCromosoma['start'][i]: tablaCromosoma['end'][i]]).upper()
+                    else:
+                        self.codificante = self.codificante + \
+                            (self.data[tablaCromosoma['start'][i]: tablaCromosoma['end'][i]])[
+                                :: - 1].upper()
+                else:
+                    if tablaCromosoma['strand'][i] == '+':
+                        self.no_codificante = self.no_codificante + \
+                            (self.data[0:tablaCromosoma['start'][i]]).upper()
+                        self.codificante = self.codificante + \
+                            (self.data[tablaCromosoma['start'][i]: tablaCromosoma['end'][i]]).upper()
+                    else:
+                        self.no_codificante = self.no_codificante + \
+                            (self.data[0:tablaCromosoma['start'][i]])[
+                                :: - 1].upper()
+                        self.codificante = self.codificante + \
+                            (self.data[tablaCromosoma['start'][i]: tablaCromosoma['end'][i]])[
+                                :: - 1].upper()
+            else:
+                if i == len(tablaCromosoma.index):
+                    if tablaCromosoma['end'][i] == len(self.data):
+                        if tablaCromosoma['strand'][i] == '+':
+                            self.no_codificante = self.no_codificante + \
+                                (self.data[tablaCromosoma['end'][i-1]
+                                 :tablaCromosoma['start'][i]]).upper()
+                            self.codificante = self.codificante + \
+                                (self.data[tablaCromosoma['start'][i]
+                                 : tablaCromosoma['end'][i]]).upper()
+                        else:
+                            self.no_codificante = self.no_codificante + \
+                                (self.data[tablaCromosoma['end'][i-1]
+                                 :tablaCromosoma['start'][i]])[:: -1].upper()
+                            self.codificante = self.codificante + \
+                                (self.data[tablaCromosoma['start'][i]: tablaCromosoma['end'][i]])[
+                                    :: -1].upper()
+                    else:
+                        if tablaCromosoma['strand'][i] == '+':
+                            self.codificante = self.codificante + \
+                                (self.data[tablaCromosoma['start'][i]
+                                 : tablaCromosoma['end'][i]]).upper()
+                            self.no_codificante = self.no_codificante + \
+                                (self.data[tablaCromosoma['end'][i-1]
+                                 :tablaCromosoma['start'][i]]).upper()
+                            self.no_codificante = self.no_codificante + \
+                                (self.data[tablaCromosoma['end']
+                                           [i]: len(self.data)]).upper()
+                        else:
+                            self.no_codificante = self.no_codificante + \
+                                (self.data[tablaCromosoma['end'][i-1]
+                                 :tablaCromosoma['start'][i]])[:: -1].upper()
+                            self.codificante = self.codificante + \
+                                (self.data[tablaCromosoma['start'][i]: tablaCromosoma['end'][i]])[
+                                    :: -1].upper()
+                            self.no_codificante = self.no_codificante + \
+                                (self.data[tablaCromosoma['end'][i]: len(self.data)])[
+                                    :: -1].upper()
+                else:
+                    if tablaCromosoma['strand'][i] == '+':
+                        self.no_codificante = self.no_codificante + \
+                            (self.data[tablaCromosoma['end'][i-1]
+                             :tablaCromosoma['start'][i]]).upper()
+                        self.codificante = self.codificante + \
+                            (self.data[tablaCromosoma['start'][i]
+                             : tablaCromosoma['end'][i]]).upper()
+                    else:
+                        self.no_codificante = self.no_codificante + \
+                            (self.data[tablaCromosoma['end'][i-1]
+                             :tablaCromosoma['start'][i]])[:: -1].upper()
+                        self.codificante = self.codificante + \
+                            (self.data[tablaCromosoma['start'][i]: tablaCromosoma['end'][i]])[
+                                :: -1].upper()
+        self.almacenar()
+
+    def filtrarTabla(self):
+        tablaCromosoma = self.df[(self.df['# feature'] == 'gene') & (
+            self.df['seq_type'] == 'chromosome')]
+        return tablaCromosoma
 
     def almacenar(self):
-    	file = open("codificante.fasta","w")
-    	file.write(self.codificante)
-    	file2 = open("no_codificante.fasta","w")
-    	file2.write(self.no_codificante)
-    	file.close()
-    	file2.close()
-
-
-
-
-
+        file = open("ArchivosGenerados/Secuencias/Codificante/" +
+                    self.nombreArchivo + "_codificante.fasta", "w")
+        file.write(self.codificante)
+        file2 = open("ArchivosGenerados/Secuencias/NoCodificante/" +
+                     self.nombreArchivo + "_noCodificante.fasta", "w")
+        file2.write(self.no_codificante)
+        file.close()
+        file2.close()

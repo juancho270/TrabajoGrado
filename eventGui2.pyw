@@ -1,5 +1,6 @@
 import sys
 from Gui2 import *
+from detrendedLogic import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QPixmap
@@ -8,24 +9,32 @@ from archivo import *
 
 
 class Ventana2(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, parent, nombre):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_FormImg()
         self.ui.setupUi(self)
         self.ui.btnBoxCounting.clicked.connect(self.imprimir)
-        self.pixmapCod = QPixmap('Codificante.jpg')
-        self.pixmapNoCod = QPixmap('noCodificante.jpg')
+        self.pixmapCod = QPixmap(
+            "Imagenes/Codificante/" + nombre + "_codificante.jpg")
+        self.pixmapNoCod = QPixmap(
+            "Imagenes/NoCodificante/" + nombre + "_noCodificante.jpg")
         self.pixmapCod2 = self.pixmapCod.scaled(self.ui.labelImgCod.width(),
                                                 self.ui.labelImgCod.height())
         self.pixmapNoCod2 = self.pixmapNoCod.scaled(
             self.ui.labelImgNoCod.width(), self.ui.labelImgNoCod.height())
         self.ui.labelImgCod.setPixmap(self.pixmapCod2)
         self.ui.labelImgNoCod.setPixmap(self.pixmapNoCod2)
+        self.ui.btnDetrrended.clicked.connect(self.openVentanaDetrended)
+        self.nombreArchivo = nombre
 
         # self.resize(pixmapNoCod.width(),pixmapNoCod.height())
 
+    def openVentanaDetrended(self):
+        self.ventana = ventanaDetrended(None, self.nombreArchivo)
+        self.ventana.show()
+
     def imprimir(self):
-        print('hola')
+        print(self.nombreArchivo)
 
 
 if __name__ == "__main__":

@@ -9,6 +9,7 @@ from secuencia import *
 from PyQt5.QtWidgets import *
 from pylab import *
 import matplotlib.pyplot as plt
+from numpy import array
 
 
 class Archivo:
@@ -19,24 +20,37 @@ class Archivo:
         self.nocodificante = ""
         self.cargaDatos = False
         self.cargaTabla = False
+        self.nombreArchivo = ""
 
     def recuperar(self, ventana):
         nombrearch = QFileDialog.getOpenFileName(
-            ventana, 'Open File', "", " (*.txt *.fasta )")
-        if nombrearch != '':
+            ventana, 'Open File', "", " (*.txt *.fasta *.fna )")
+
+        if nombrearch[0] != '':
             archi1 = open(nombrearch[0], "r", encoding="utf-8")
-            contenido = archi1.read()
-            contenido2 = "".join(contenido.split("\n")[1:])
-            self.datos = self.quitarRepeticiones(contenido2, 'N')
+            tamano = len(nombrearch[0].split('/'))
+            self.nombreArchivo = nombrearch[0].split(
+                '/')[tamano-1].split('.')[0]
+            self.datos = (self.eliminarMarcas(archi1.read()))
             archi1.close()
             self.cargaDatos = True
         self.llamar()
         return nombrearch[0]
 
+    def eliminarMarcas(self, contenidoArchivo):
+        filas = contenidoArchivo.split('\n')
+        lineaSecuencia = ''
+        for i in filas:
+            if i != '':
+                if i[0] != '>':
+                    lineaSecuencia = lineaSecuencia + \
+                        self.quitarRepeticiones(i.upper(), 'N')
+        return lineaSecuencia
+
     def recuperarTabla(self, ventana):
         nombrearch = QFileDialog.getOpenFileName(
             ventana, 'Open File', "", " (*.txt *.fasta )")
-        if nombrearch != '':
+        if nombrearch[0] != '':
             self.tabla = pd.read_csv(nombrearch[0], sep='\t')
             self.cargaTabla = True
         self.llamar()
@@ -47,43 +61,35 @@ class Archivo:
             self.secuenciaDivididas()
 
     def secuenciaDivididas(self):
-        obj1 = Secuencia(self.tabla, self.datos)
+        obj1 = Secuencia(self.tabla, self.datos, self.nombreArchivo)
         obj1.separar()
-        archi1 = open("codificante.fasta", "r", encoding="utf-8")
+        archi1 = open("ArchivosGenerados/Secuencias/Codificante/" +
+                      self.nombreArchivo + "_codificante.fasta", "r", encoding="utf-8")
         contenido = archi1.read()
         self.codificante = contenido
         archi1.close()
-        archi3 = open("no_codificante.fasta", "r", encoding="utf-8")
+        archi3 = open("ArchivosGenerados/Secuencias/NoCodificante/" +
+                      self.nombreArchivo + "_noCodificante.fasta", "r", encoding="utf-8")
         contenido3 = archi3.read()
         self.no_codificante = contenido3
         archi3.close()
 
-    def hacerImagenCodificante(self, kmers):
-        f2 = imagen.count_kmers(self.codificante, kmers)
-        print("contadores: \n")
-        print(f2)
-        f2_prob = imagen.probabilities(self.codificante, f2, kmers)
-        print("probabilidad: \n")
-        print(f2_prob)
-        chaos_f2 = imagen.chaos_game_representation(f2_prob, kmers)
-        plt.imshow(chaos_f2, interpolation='nearest', cmap=cm.gray_r)
+    def hacerImagenCodificante(self, nombre):
+        T = imagen.chaos_game_representation2(self.codificante)
+        plt.scatter(T[:, 0], T[:, 1], s=5 ** -
+                    ((len(str(len(self.codificante))))-2), c='#000000')
         plt.axis('off')
-        plt.savefig("Codificante.jpg", bbox_inches='tight',
-                    pad_inches=0, dpi=300)
+        plt.savefig("Imagenes/Codificante/" + nombre + "_codificante" + ".jpg",
+                    bbox_inches='tight', pad_inches=-0.2)
         plt.show()
 
-    def hacerImagenNoCodificante(self, kmers):
-        f2 = imagen.count_kmers(self.no_codificante, kmers)
-        print("contadores: \n")
-        print(f2)
-        f2_prob = imagen.probabilities(self.no_codificante, f2, kmers)
-        print("probabilidad: \n")
-        print(f2_prob)
-        chaos_f2 = imagen.chaos_game_representation(f2_prob, kmers)
-        plt.imshow(chaos_f2, interpolation='nearest', cmap=cm.gray_r)
+    def hacerImagenNoCodificante(self, nombre):
+        T = imagen.chaos_game_representation2(self.no_codificante)
+        plt.scatter(T[:, 0], T[:, 1], s=5 ** -
+                    ((len(str(len(self.no_codificante))))-2), c='#000000')
         plt.axis('off')
-        plt.savefig("noCodificante.jpg", bbox_inches='tight',
-                    pad_inches=0, dpi=300)
+        plt.savefig("Imagenes/NoCodificante/" + nombre + "_noCodificante" +
+                    ".jpg", bbox_inches='tight', pad_inches=-0.2)
         plt.show()
 
     def quitarRepeticiones(self, unaCadena, unaLetra):

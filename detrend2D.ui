@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>detrend2D</class>
+ <widget class="QWidget" name="detrend2D">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>701</width>
+    <height>383</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Detrend 2D</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

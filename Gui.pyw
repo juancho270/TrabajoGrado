@@ -21,10 +21,11 @@ class Ventana(QWidget):
         self.cargaTabla = False
         self.imagenCod = False
         self.imagenNoCod = False
+        self.nombreArchivo = ''
 
     def abrirImg(self):
         if self.carga and self.cargaTabla and self.imagenCod and self.imagenNoCod:
-            self.ventana = Ventana2()
+            self.ventana = Ventana2(None, self.nombreArchivo)
             self.ventana.show()
         else:
             msg = QMessageBox()
@@ -44,13 +45,14 @@ class Ventana(QWidget):
 
     def cargaArchivo(self):
         ruta = archivo.recuperar(self)
+        tamano = len(ruta.split('/'))
+        self.nombreArchivo = ruta.split('/')[tamano-1].split('.')[0]
         self.ui.textArchivo.setPlainText(ruta)
         self.carga = True
 
     def codificante(self):
         if self.carga and self.cargaTabla:
-            kmers = self.ui.NoKmers.text()
-            archivo.hacerImagenCodificante(int(kmers))
+            archivo.hacerImagenCodificante(self.nombreArchivo)
             self.imagenCod = True
         else:
             msg = QMessageBox()
@@ -65,8 +67,7 @@ class Ventana(QWidget):
 
     def noCodificante(self):
         if self.carga and self.cargaTabla:
-            kmers = self.ui.NoKmers.text()
-            archivo.hacerImagenNoCodificante(int(kmers))
+            archivo.hacerImagenNoCodificante(self.nombreArchivo)
             self.imagenNoCod = True
         else:
             msg = QMessageBox()
