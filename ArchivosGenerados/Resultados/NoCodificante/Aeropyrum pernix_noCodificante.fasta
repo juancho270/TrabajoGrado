@@ -1,0 +1,40 @@
+Para q = -1.0: 
+Para la escala 1 37793, el valor DFA es: [1634968.87198706]
+Para la escala 2 75586, el valor DFA es: [4529225.50059436]
+Para la escala 3 113379, el valor DFA es: [10923936.52234677]
+Para la escala 4 151172, el valor DFA es: [11387030.50530658]
+Para la escala 5 188965, el valor DFA es: [19882930.57484388]
+
+el valor de hurst es: [1.52250935]
+Para q = -0.5: 
+Para la escala 1 37793, el valor DFA es: [1817476.22017241]
+Para la escala 2 75586, el valor DFA es: [4687136.95689746]
+Para la escala 3 113379, el valor DFA es: [11072405.27899948]
+Para la escala 4 151172, el valor DFA es: [11525025.73359297]
+Para la escala 5 188965, el valor DFA es: [19882930.57484387]
+
+el valor de hurst es: [1.4585555]
+Para q = 0.2: 
+Para la escala 1 37793, el valor DFA es: [2092223.45242592]
+Para la escala 2 75586, el valor DFA es: [4915267.70224356]
+Para la escala 3 113379, el valor DFA es: [11286694.74780351]
+Para la escala 4 151172, el valor DFA es: [11723541.03398121]
+Para la escala 5 188965, el valor DFA es: [19882930.5748439]
+
+el valor de hurst es: [1.37354697]
+Para q = 0.7: 
+Para la escala 1 37793, el valor DFA es: [2286758.50799112]
+Para la escala 2 75586, el valor DFA es: [5079180.36694475]
+Para la escala 3 113379, el valor DFA es: [11441610.39853178]
+Para la escala 4 151172, el valor DFA es: [11866865.35103182]
+Para la escala 5 188965, el valor DFA es: [19882930.57484386]
+
+el valor de hurst es: [1.31989954]
+Para q = 1.2: 
+Para la escala 1 37793, el valor DFA es: [2470909.14879959]
+Para la escala 2 75586, el valor DFA es: [5240744.23345741]
+Para la escala 3 113379, el valor DFA es: [11595687.30851657]
+Para la escala 4 151172, el valor DFA es: [12009497.45360741]
+Para la escala 5 188965, el valor DFA es: [19882930.57484388]
+
+el valor de hurst es: [1.27321021]

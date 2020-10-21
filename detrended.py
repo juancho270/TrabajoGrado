@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_detrend(object):
     def setupUi(self, detrend):
         detrend.setObjectName("detrend")
-        detrend.resize(409, 283)
+        detrend.resize(409, 328)
         font = QtGui.QFont()
         font.setPointSize(10)
         detrend.setFont(font)
@@ -91,6 +91,9 @@ class Ui_detrend(object):
         self.distancia = QtWidgets.QTextEdit(detrend)
         self.distancia.setGeometry(QtCore.QRect(150, 60, 161, 31))
         self.distancia.setObjectName("distancia")
+        self.btnAmbas = QtWidgets.QPushButton(detrend)
+        self.btnAmbas.setGeometry(QtCore.QRect(160, 280, 91, 31))
+        self.btnAmbas.setObjectName("btnAmbas")
 
         self.retranslateUi(detrend)
         self.horizontalSlider.sliderMoved['int'].connect(self.lblGrado.setNum)
@@ -106,7 +109,7 @@ class Ui_detrend(object):
         self.valorQ.setItemText(3, _translate("detrend", "-5 a 5"))
         self.valorQ.setItemText(4, _translate("detrend", "-10 a 10"))
         self.valorQ.setItemText(5, _translate("detrend", "-20 a 20"))
-        self.escalas.setItemText(0, _translate("detrend", "Seleccione Una Opcion"))
+        self.escalas.setItemText(0, _translate("detrend", "Seleccione una Opcion"))
         self.escalas.setItemText(1, _translate("detrend", "5"))
         self.escalas.setItemText(2, _translate("detrend", "10"))
         self.escalas.setItemText(3, _translate("detrend", "20"))
@@ -117,6 +120,7 @@ class Ui_detrend(object):
         self.lblGrado.setText(_translate("detrend", "1"))
         self.btnNoCodificanteA.setText(_translate("detrend", "Analsis No Codificante"))
         self.label_3.setText(_translate("detrend", "Distancia de q:"))
+        self.btnAmbas.setText(_translate("detrend", "Ambas"))
 
 
 if __name__ == "__main__":

@@ -40,25 +40,25 @@ class Detrended:
         lag = np.linspace(segmento, time.size, escala).astype(int)
         return lag
 
-    def detrendedAnality(self, time, lag, q, order, nombre):
+    def detrendedAnality(self, time, lag, q, order):
         lag, dfa = MFDFA(time, lag=lag, q=q, order=order)
         # To uncover the Hurst index, lets get some log-log plots
         # And now we need to fit the line to find the slope. We will
         # fit the first points, since the results are more accurate
         # there. Don't forget that if you are seeing in log-log
         # scales, you need to fit the logs of the results
+        data = {}
+        data["contenido"] = ''
         hurst = np.polyfit(np.log(lag[:15]), np.log(dfa[:15]), 1)[0]
-        file = open(nombre, "a")
-        file.write("Para q = " + str(q) + ": \n")
+        data["hurst"] = hurst
+        data["titulo"] = "Para q = " + str(q) + ": \n"
         for i in range(0, lag.size):
-            file.write('Para la escala ' + str(i+1) + " " +
-                       str(lag[i]) + ", " + "el valor DFA es: " + str(dfa[i]) + "\n")
-        file.write("\n" + "\n")
-        file.write("el valor de hurst es: " + str(hurst) + "\n")
-        file.close()
+            data["contenido"] = data["contenido"] + "Para la escala " + str(i+1) + " " + str(
+                lag[i]) + ", " + "el valor DFA es: " + str(dfa[i]) + "\n"
+        data["hurst_contenido"] = "el valor de hurst es: " + str(hurst) + "\n"
 
         # Now what you should obtain is: slope = H + 1
-        return hurst
+        return data
 
 
 detrended = Detrended()

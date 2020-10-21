@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>409</width>
-    <height>283</height>
+    <height>328</height>
    </rect>
   </property>
   <property name="font">
@@ -256,6 +256,19 @@
      <width>161</width>
      <height>31</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnAmbas">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>280</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ambas</string>
    </property>
   </widget>
  </widget>
