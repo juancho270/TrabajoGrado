@@ -190,7 +190,12 @@ class ventanaDetrended(QWidget):
                         self.nombreArchivo + "_Codificante.jpg")
             self.graficaCodificante = True
             plt.show()
-            print(rangoQ, resultados)
+            tq = np.zeros(resultados.shape)
+            count = 0
+            for i in rangoQ:
+                tq[count] = (resultados[count] * i) - 1
+                count = count + 1
+            deltaQ = max(rangoQ) - min(rangoQ)
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)

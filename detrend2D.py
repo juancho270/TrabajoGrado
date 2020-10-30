@@ -1,0 +1,118 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'detrend2D.ui'
+#
+# Created by: PyQt5 UI code generator 5.12.3
+#
+# WARNING! All changes made in this file will be lost!
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_detrend2D(object):
+    def setupUi(self, detrend2D):
+        detrend2D.setObjectName("detrend2D")
+        detrend2D.resize(409, 289)
+        self.label = QtWidgets.QLabel(detrend2D)
+        self.label.setGeometry(QtCore.QRect(70, 20, 51, 21))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.valorQ = QtWidgets.QComboBox(detrend2D)
+        self.valorQ.setGeometry(QtCore.QRect(140, 20, 201, 21))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.valorQ.setFont(font)
+        self.valorQ.setObjectName("valorQ")
+        self.valorQ.addItem("")
+        self.valorQ.addItem("")
+        self.valorQ.addItem("")
+        self.valorQ.addItem("")
+        self.valorQ.addItem("")
+        self.valorQ.addItem("")
+        self.label_6 = QtWidgets.QLabel(detrend2D)
+        self.label_6.setGeometry(QtCore.QRect(70, 120, 47, 13))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_6.setFont(font)
+        self.label_6.setObjectName("label_6")
+        self.escalas = QtWidgets.QComboBox(detrend2D)
+        self.escalas.setGeometry(QtCore.QRect(140, 120, 181, 22))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.escalas.setFont(font)
+        self.escalas.setObjectName("escalas")
+        self.escalas.addItem("")
+        self.escalas.addItem("")
+        self.escalas.addItem("")
+        self.escalas.addItem("")
+        self.escalas.addItem("")
+        self.escalas.addItem("")
+        self.escalas.addItem("")
+        self.escalas.addItem("")
+        self.distancia = QtWidgets.QTextEdit(detrend2D)
+        self.distancia.setGeometry(QtCore.QRect(160, 60, 161, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.distancia.setFont(font)
+        self.distancia.setObjectName("distancia")
+        self.label_3 = QtWidgets.QLabel(detrend2D)
+        self.label_3.setGeometry(QtCore.QRect(70, 60, 91, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.btnNoCodificanteA = QtWidgets.QPushButton(detrend2D)
+        self.btnNoCodificanteA.setGeometry(QtCore.QRect(220, 180, 151, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.btnNoCodificanteA.setFont(font)
+        self.btnNoCodificanteA.setObjectName("btnNoCodificanteA")
+        self.btnAmbas = QtWidgets.QPushButton(detrend2D)
+        self.btnAmbas.setGeometry(QtCore.QRect(160, 230, 91, 31))
+        self.btnAmbas.setObjectName("btnAmbas")
+        self.btnCodificanteA = QtWidgets.QPushButton(detrend2D)
+        self.btnCodificanteA.setGeometry(QtCore.QRect(40, 180, 151, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.btnCodificanteA.setFont(font)
+        self.btnCodificanteA.setObjectName("btnCodificanteA")
+
+        self.retranslateUi(detrend2D)
+        QtCore.QMetaObject.connectSlotsByName(detrend2D)
+
+    def retranslateUi(self, detrend2D):
+        _translate = QtCore.QCoreApplication.translate
+        detrend2D.setWindowTitle(_translate("detrend2D", "Detrend 2D"))
+        self.label.setText(_translate("detrend2D", "Valor q:"))
+        self.valorQ.setItemText(0, _translate("detrend2D", "Seleccione un Opción"))
+        self.valorQ.setItemText(1, _translate("detrend2D", "-20 a 20"))
+        self.valorQ.setItemText(2, _translate("detrend2D", "-10 a 10"))
+        self.valorQ.setItemText(3, _translate("detrend2D", "-5 a 5"))
+        self.valorQ.setItemText(4, _translate("detrend2D", "-2 a 2"))
+        self.valorQ.setItemText(5, _translate("detrend2D", "-1 a 1"))
+        self.label_6.setText(_translate("detrend2D", "Escalas:"))
+        self.escalas.setItemText(0, _translate("detrend2D", "Seleccione una Opcion"))
+        self.escalas.setItemText(1, _translate("detrend2D", "5"))
+        self.escalas.setItemText(2, _translate("detrend2D", "10"))
+        self.escalas.setItemText(3, _translate("detrend2D", "20"))
+        self.escalas.setItemText(4, _translate("detrend2D", "50"))
+        self.escalas.setItemText(5, _translate("detrend2D", "60"))
+        self.escalas.setItemText(6, _translate("detrend2D", "70"))
+        self.escalas.setItemText(7, _translate("detrend2D", "80"))
+        self.label_3.setText(_translate("detrend2D", "Distancia de q:"))
+        self.btnNoCodificanteA.setText(_translate("detrend2D", "Analsis No Codificante"))
+        self.btnAmbas.setText(_translate("detrend2D", "Ambas"))
+        self.btnCodificanteA.setText(_translate("detrend2D", "Analsis Codificante"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    detrend2D = QtWidgets.QWidget()
+    ui = Ui_detrend2D()
+    ui.setupUi(detrend2D)
+    detrend2D.show()
+    sys.exit(app.exec_())

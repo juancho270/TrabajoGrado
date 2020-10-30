@@ -92,6 +92,15 @@ class Archivo:
                     ".jpg", bbox_inches='tight', pad_inches=-0.2)
         plt.show()
 
+    def hacerImagenCompleta(self, nombre):
+        T = imagen.chaos_game_representation2(self.datos)
+        plt.scatter(T[:, 0], T[:, 1], s=5 ** -
+                    ((len(str(len(self.datos))))-2), c='#000000')
+        plt.axis('off')
+        plt.savefig("Imagenes/Completa/" + nombre + "_completa" +
+                    ".jpg", bbox_inches='tight', pad_inches=-0.2)
+        plt.close()
+
     def quitarRepeticiones(self, unaCadena, unaLetra):
         cadena = ""
         for char in unaCadena:

@@ -1,6 +1,8 @@
 import sys
 from Gui2 import *
 from detrendedLogic import *
+from detrend2DLogic import *
+from boxCountingLogic import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QPixmap
@@ -13,7 +15,8 @@ class Ventana2(QWidget):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_FormImg()
         self.ui.setupUi(self)
-        self.ui.btnBoxCounting.clicked.connect(self.imprimir)
+        self.ui.btnBoxCounting.clicked.connect(self.openVentanaBoxCounting)
+        self.ui.btnDetrended2D.clicked.connect(self.openVentanaDetrended2D)
         self.pixmapCod = QPixmap(
             "Imagenes/Codificante/" + nombre + "_codificante.jpg")
         self.pixmapNoCod = QPixmap(
@@ -33,8 +36,13 @@ class Ventana2(QWidget):
         self.ventana = ventanaDetrended(None, self.nombreArchivo)
         self.ventana.show()
 
-    def imprimir(self):
-        print(self.nombreArchivo)
+    def openVentanaBoxCounting(self):
+        self.ventana = ventanaBoxCounting(None, self.nombreArchivo)
+        self.ventana.show()
+
+    def openVentanaDetrended2D(self):
+        self.ventana = ventanaDetrended2D(None, self.nombreArchivo)
+        self.ventana.show()
 
 
 if __name__ == "__main__":

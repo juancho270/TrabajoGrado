@@ -52,6 +52,7 @@ class Ventana(QWidget):
 
     def codificante(self):
         if self.carga and self.cargaTabla:
+            archivo.hacerImagenCompleta(self.nombreArchivo)
             archivo.hacerImagenCodificante(self.nombreArchivo)
             self.imagenCod = True
         else:
