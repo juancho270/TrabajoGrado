@@ -60,16 +60,35 @@ class ventanaDetrended2D(QWidget):
             elif self.ui.valorQ.currentText() == '-10 a 10':
                 rangoQ = np.arange(-10.0, 10+distancia, distancia)
             elif self.ui.valorQ.currentText() == '-20 a 20':
-                rangoQ = np.arange(-10.0, 20 + distancia, distancia)
+                rangoQ = np.arange(-20.0, 20 + distancia, distancia)
 
-            noCodificante = io.imread(
+            dataNoCodificante = io.imread(
                 "Imagenes/NoCodificante/" + self.nombreArchivo + "_noCodificante.jpg")/255.0
 
-            codificante = io.imread(
+            dataCodificante = io.imread(
                 "Imagenes/Codificante/" + self.nombreArchivo + "_codificante.jpg")/255.0
 
-            completa = io.imread(
+            dataCompleta = io.imread(
                 "Imagenes/Completa/" + self.nombreArchivo + "_completa.jpg")/255.0
+            codificante = ''
+            noCodificante = ''
+            completa = ''
+            if self.ui.empezarDesde.currentText() == 'Superior Derecha':
+                codificante = dataCodificante
+                noCodificante = dataNoCodificante
+                completa = dataCompleta
+            elif self.ui.empezarDesde.currentText() == 'Superior Izquierda':
+                codificante = dataCodificante[::-1]
+                noCodificante = dataNoCodificante[::-1]
+                completa = dataCompleta[::-1]
+            elif self.ui.empezarDesde.currentText() == 'Inferior Derecha':
+                codificante = np.flip(dataCodificante)
+                noCodificante = np.flip(dataNoCodificante)
+                completa = np.flip(dataCompleta)
+            else:
+                codificante = np.flip(dataCodificante[::-1])
+                noCodificante = np.flip(dataNoCodificante[::-1])
+                completa = np.flip(dataCompleta[::-1])
 
             dataNoCodificante = detrended2D.convertirMatriz(noCodificante)
             dataCodificante = detrended2D.convertirMatriz(codificante)
@@ -118,8 +137,8 @@ class ventanaDetrended2D(QWidget):
                 fluctuacionesSeqCompleta, rangoQ, "SecuenciaCompleta/" + self.nombreArchivo + "_seqCompleta")
             # Figura con una fila y tres columnas, activo primer subgráfico
             plt.subplot(121)
-            p1, p2, p3 = plot(rangoQ, hCodificante, 'r^',
-                              rangoQ, hNoCodificante, 'b^', rangoQ, hSeqComplete, 'g^')
+            p1, p2, p3 = plot(rangoQ, hCodificante, 'r-',
+                              rangoQ, hNoCodificante, 'b-', rangoQ, hSeqComplete, 'g-')
             # Etiqueta del eje Y, que es común para todas
             plt.legend(('SC', 'SNC', 'CC'),
                        prop={'size': 10}, loc='upper right')
@@ -134,8 +153,10 @@ class ventanaDetrended2D(QWidget):
 
             # Figura con una fila y tres columnas, activo segundo subgráfico
             plt.subplot(122)
-            p4, p5, p6 = plot(rangoQ, fCodificante, 'b^',
-                              rangoQ, fNoCodificante, 'r^', rangoQ, fSeqComplete, 'g^')
+            rangoQ2 = rangoQ[0:rangoQ.shape[0]-1]
+            print(rangoQ.shape, rangoQ2.shape, fCodificante.shape)
+            p4, p5, p6 = plot(rangoQ2, fCodificante, 'b-',
+                              rangoQ2, fNoCodificante, 'r-', rangoQ2, fSeqComplete, 'g-')
             # Etiqueta del eje X, que es común para todas
             # Etiqueta del eje Y, que es común para todas
             plt.legend(('SC', 'SNC', 'CC'),
@@ -183,11 +204,19 @@ class ventanaDetrended2D(QWidget):
             elif self.ui.valorQ.currentText() == '-10 a 10':
                 rangoQ = np.arange(-10.0, 10+distancia, distancia)
             elif self.ui.valorQ.currentText() == '-20 a 20':
-                rangoQ = np.arange(-10.0, 20 + distancia, distancia)
+                rangoQ = np.arange(-20.0, 20 + distancia, distancia)
 
-            noCodificante = io.imread(
+            dataNoCodificante = io.imread(
                 "Imagenes/NoCodificante/" + self.nombreArchivo + "_noCodificante.jpg")/255.0
-
+            noCodificante = ''
+            if self.ui.empezarDesde.currentText() == 'Superior Derecha':
+                noCodificante = dataNoCodificante
+            elif self.ui.empezarDesde.currentText() == 'Superior Izquierda':
+                noCodificante = dataNoCodificante[::-1]
+            elif self.ui.empezarDesde.currentText() == 'Inferior Derecha':
+                noCodificante = np.flip(dataNoCodificante)
+            else:
+                noCodificante = np.flip(dataNoCodificante[::-1])
             data = detrended2D.convertirMatriz(noCodificante)
             subconjuntos = detrended2D.subConjuntos(escalaSeleccionada, data)
             sumAcomulada = detrended2D.sumAcumuladaSubConjuntos(subconjuntos)
@@ -200,7 +229,7 @@ class ventanaDetrended2D(QWidget):
 
             # Figura con una fila y tres columnas, activo primer subgráfico
             plt.subplot(121)
-            p1,  = plot(rangoQ, hNoCodificante, 'r^')
+            p1,  = plot(rangoQ, hNoCodificante, 'r-')
             # Etiqueta del eje Y, que es común para todas
             plt.legend(('SNC'),
                        prop={'size': 10}, loc='upper right')
@@ -211,7 +240,8 @@ class ventanaDetrended2D(QWidget):
 
             # Figura con una fila y tres columnas, activo segundo subgráfico
             plt.subplot(122)
-            p2 = plot(rangoQ, fNoCodificante, 'b^')
+            rangoQ2 = rangoQ[0:rangoQ.shape[0] - 1]
+            p2 = plot(rangoQ2, fNoCodificante, 'b-')
             # Etiqueta del eje X, que es común para todas
             # Etiqueta del eje Y, que es común para todas
             plt.legend(('SNC'),
@@ -247,28 +277,27 @@ class ventanaDetrended2D(QWidget):
                 msg.setWindowTitle("Error")
                 retval = msg.exec_()
             if self.ui.valorQ.currentText() == '-1 a 1':
-                rango1 = np.arange(-1.0, -0.2, distancia)
-                rango2 = np.arange(0.2, 1.0 + distancia, distancia)
-                rangoQ = np.concatenate((rango1, rango2), axis=0)
+                rangoQ = np.arange(-1.0, 1.0 + distancia, distancia)
             elif self.ui.valorQ.currentText() == '-3 a 3':
-                rango1 = np.arange(-3.0, -0.2, distancia)
-                rango2 = np.arange(0.2, 3.0 + distancia, distancia)
-                rangoQ = np.concatenate((rango1, rango2), axis=0)
+                rangoQ = np.arange(-3.0, 3.0 + distancia, distancia)
             elif self.ui.valorQ.currentText() == '-5 a 5':
-                rango1 = np.arange(-5.0, -0.2, distancia)
-                rango2 = np.arange(0.2, 5.0 + distancia, distancia)
-                rangoQ = np.concatenate((rango1, rango2), axis=0)
+                rangoQ = np.arange(-5.0, 5 + distancia, distancia)
             elif self.ui.valorQ.currentText() == '-10 a 10':
-                rango1 = np.arange(-10.0, -0.2, distancia)
-                rango2 = np.arange(0.2, 10.0 + distancia, distancia)
-                rangoQ = np.concatenate((rango1, rango2), axis=0)
+                rangoQ = np.arange(-10.0, 10+distancia, distancia)
             elif self.ui.valorQ.currentText() == '-20 a 20':
-                rango1 = np.arange(-20.0, -0.2, distancia)
-                rango2 = np.arange(0.2, 20.0 + distancia, distancia)
-                rangoQ = np.concatenate((rango1, rango2), axis=0)
+                rangoQ = np.arange(-20.0, 20 + distancia, distancia)
 
-            codificante = io.imread(
+            dataCodificante = io.imread(
                 "Imagenes/Codificante/" + self.nombreArchivo + "_codificante.jpg")/255.0
+            codificante = ''
+            if self.ui.empezarDesde.currentText() == 'Superior Derecha':
+                codificante = dataCodificante
+            elif self.ui.empezarDesde.currentText() == 'Superior Izquierda':
+                codificante = dataCodificante[::-1]
+            elif self.ui.empezarDesde.currentText() == 'Inferior Derecha':
+                codificante = np.flip(dataCodificante)
+            else:
+                codificante = np.flip(dataCodificante[::-1])
 
             data = detrended2D.convertirMatriz(codificante)
             subconjuntos = detrended2D.subConjuntos(escalaSeleccionada, data)
@@ -282,7 +311,7 @@ class ventanaDetrended2D(QWidget):
 
             # Figura con una fila y tres columnas, activo primer subgráfico
             plt.subplot(121)
-            p1,  = plot(rangoQ, hCodificante, 'r^')
+            p1,  = plot(rangoQ, hCodificante, 'r-')
             # Etiqueta del eje Y, que es común para todas
             plt.legend(('SNC'),
                        prop={'size': 10}, loc='upper right')
@@ -293,7 +322,9 @@ class ventanaDetrended2D(QWidget):
 
             # Figura con una fila y tres columnas, activo segundo subgráfico
             plt.subplot(122)
-            p2 = plot(rangoQ, fCodificante, 'b^')
+            rangoQ2 = rangoQ[0:rangoQ.shape[0] - 1]
+            p2 = plot(rangoQ2, fCodificante, 'b-')
+            print(rangoQ2, fCodificante)
             # Etiqueta del eje X, que es común para todas
             # Etiqueta del eje Y, que es común para todas
             plt.legend(('SNC'),

@@ -30,7 +30,6 @@ class Ventana(QWidget):
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
-
             msg.setText("No se han generado las imagenes")
             msg.setInformativeText(
                 "Se deben generar las imagenes y estas se guardaran automaticamente o podras seleccionar donde guardarlas")

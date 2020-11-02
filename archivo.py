@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 from tkinter import scrolledtext as st
 import sys
 from tkinter import filedialog as fd
@@ -10,6 +11,7 @@ from PyQt5.QtWidgets import *
 from pylab import *
 import matplotlib.pyplot as plt
 from numpy import array
+import matplotlib.image as mpimg
 
 
 class Archivo:
@@ -75,31 +77,44 @@ class Archivo:
         archi3.close()
 
     def hacerImagenCodificante(self, nombre):
-        T = imagen.chaos_game_representation2(self.codificante)
-        plt.scatter(T[:, 0], T[:, 1], s=5 ** -
-                    ((len(str(len(self.codificante))))-2), c='#000000')
-        plt.axis('off')
-        plt.savefig("Imagenes/Codificante/" + nombre + "_codificante" + ".jpg",
-                    bbox_inches='tight', pad_inches=-0.2)
-        plt.show()
+        if os.path.isfile("Imagenes/Codificante/" + nombre + "_codificante" + ".jpg") == False:
+            T = imagen.chaos_game_representation2(self.codificante)
+            plt.scatter(T[:, 0], T[:, 1], s=5 ** -
+                        ((len(str(len(self.codificante))))-2), c='#000000')
+            plt.axis('off')
+            plt.savefig("Imagenes/Codificante/" + nombre + "_codificante" + ".jpg",
+                        bbox_inches='tight', pad_inches=-0.2)
+            plt.show()
+        else:
+            img = mpimg.imread("Imagenes/Codificante/" +
+                               nombre + "_codificante" + ".jpg")
+            imgplot = plt.imshow(img)
+            plt.show()
 
     def hacerImagenNoCodificante(self, nombre):
-        T = imagen.chaos_game_representation2(self.no_codificante)
-        plt.scatter(T[:, 0], T[:, 1], s=5 ** -
-                    ((len(str(len(self.no_codificante))))-2), c='#000000')
-        plt.axis('off')
-        plt.savefig("Imagenes/NoCodificante/" + nombre + "_noCodificante" +
-                    ".jpg", bbox_inches='tight', pad_inches=-0.2)
-        plt.show()
+        if os.path.isfile("Imagenes/NoCodificante/" + nombre + "_noCodificante" + ".jpg") == False:
+            T = imagen.chaos_game_representation2(self.no_codificante)
+            plt.scatter(T[:, 0], T[:, 1], s=5 ** -
+                        ((len(str(len(self.no_codificante))))-2), c='#000000')
+            plt.axis('off')
+            plt.savefig("Imagenes/NoCodificante/" + nombre + "_noCodificante" +
+                        ".jpg", bbox_inches='tight', pad_inches=-0.2)
+            plt.show()
+        else:
+            img = mpimg.imread("Imagenes/NoCodificante/" +
+                               nombre + "_noCodificante" + ".jpg")
+            imgplot = plt.imshow(img)
+            plt.show()
 
     def hacerImagenCompleta(self, nombre):
-        T = imagen.chaos_game_representation2(self.datos)
-        plt.scatter(T[:, 0], T[:, 1], s=5 ** -
-                    ((len(str(len(self.datos))))-2), c='#000000')
-        plt.axis('off')
-        plt.savefig("Imagenes/Completa/" + nombre + "_completa" +
-                    ".jpg", bbox_inches='tight', pad_inches=-0.2)
-        plt.close()
+        if os.path.isfile("Imagenes/Completa/" + nombre + "_completa" + ".jpg") == False:
+            T = imagen.chaos_game_representation2(self.datos)
+            plt.scatter(T[:, 0], T[:, 1], s=5 ** -
+                        ((len(str(len(self.datos))))-2), c='#000000')
+            plt.axis('off')
+            plt.savefig("Imagenes/Completa/" + nombre + "_completa" +
+                        ".jpg", bbox_inches='tight', pad_inches=-0.2)
+            plt.close()
 
     def quitarRepeticiones(self, unaCadena, unaLetra):
         cadena = ""

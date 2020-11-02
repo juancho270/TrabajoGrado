@@ -56,9 +56,32 @@ class Detrended:
             data["contenido"] = data["contenido"] + "Para la escala " + str(i+1) + " " + str(
                 lag[i]) + ", " + "el valor DFA es: " + str(dfa[i]) + "\n"
         data["hurst_contenido"] = "el valor de hurst es: " + str(hurst) + "\n"
-
-        # Now what you should obtain is: slope = H + 1
         return data
+
+    # Definicion de F de alpha
+    def fdealpha(self, valoresFinales, q, nombre):
+        valoresFinales2 = np.zeros(q.shape[0] - 1)
+        tq = np.zeros(q.shape)
+        posicionFinal = 0
+        for i in q:
+            tq[posicionFinal] = (i * valoresFinales[posicionFinal]) - 1
+            posicionFinal = posicionFinal + 1
+
+        derivadaHq = np.diff(tq)/(q[1]-q[0])
+        index = -1
+        for i in range(0, (q.shape[0])-1):
+            index = index + 1
+            valoresFinales2[index] = abs(q[i]*derivadaHq[index] - tq[index])
+
+        posicion = np.where(valoresFinales2 == np.amax(valoresFinales2))
+        valoresFinales3 = np.delete(valoresFinales2, posicion)
+        q2 = np.delete(q, posicion)[0:q.shape[0]-2]
+        plt.plot(q2, valoresFinales3, 'b-')
+        plt.savefig("Imagenes/Graficas/Espectro/" +
+                    nombre)
+        plt.close()
+
+        return q2, valoresFinales3
 
 
 detrended = Detrended()

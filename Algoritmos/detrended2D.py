@@ -116,21 +116,27 @@ class Detrended2D:
             valoresFinales[countFinal] = abs(math.log(i)/math.log(self.s))
             countFinal = countFinal + 1
 
-        plt.plot(q, valoresFinales, 'b', label="SC")
+        plt.plot(q, valoresFinales, 'b-', label="SC")
 
         plt.savefig("Detrended2D/graficah(q)vsq/" +
                     nombre + "_graficaq.jpg")
         plt.close()
-        coeff = np.polyfit(q, valoresFinales, 3)
 
-        # q^3(3ax+2b) + cq^2 +  2
-        valoresFinales2 = np.zeros(q.shape)
+        valoresFinales2 = np.zeros(q.shape[0] - 1)
+        tq = np.zeros(q.shape)
         posicionFinal = 0
         for i in q:
-            valoresFinales2[posicionFinal] = i**3 * \
-                ((3*coeff[0]*i + 2*coeff[1])) + coeff[2]*(i**2) + 2
-            posicionFinal = posicionFinal+1
-        plt.plot(q+2, valoresFinales2, 'b^')
+            tq[posicionFinal] = (i * valoresFinales[posicionFinal]) - 2
+            posicionFinal = posicionFinal + 1
+
+        print(valoresFinales, tq)
+        derivadaHq = np.diff(tq, 1)/(q[1]-q[0])
+        index = -1
+        for i in range(0, (q.shape[0])-1):
+            index = index + 1
+            valoresFinales2[index] = q[i]*derivadaHq[index] - tq[index]
+        q2 = q[0:q.shape[0]-1]
+        plt.plot(q2, valoresFinales2, 'b-')
         plt.savefig("Detrended2D/espectroMultifractal/" +
                     nombre + "_espectro.jpg")
         plt.close()
