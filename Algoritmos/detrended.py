@@ -8,6 +8,7 @@ import pylab as plt
 class Detrended:
     def __init__(self):
         self.datos = ''
+        self.order = 0
 
     def lineaTiempo(self, name):
         archivo = open(name, "r")
@@ -41,6 +42,7 @@ class Detrended:
         return lag
 
     def detrendedAnality(self, time, lag, q, order):
+        self.order = order
         lag, dfa = MFDFA(time, lag=lag, q=q, order=order)
         # To uncover the Hurst index, lets get some log-log plots
         # And now we need to fit the line to find the slope. We will
@@ -67,9 +69,16 @@ class Detrended:
             tq[posicionFinal] = (i * valoresFinales[posicionFinal]) - 1
             posicionFinal = posicionFinal + 1
 
+        plt.plot(q, tq, 'b-')
+        plt.xlabel('q')
+        plt.ylabel('tq')
+        plt.title('q vs tq')
+        plt.savefig("Imagenes/Graficas/qvstq/" +
+                    nombre)
+        plt.close()
         derivadaHq = np.diff(tq)/(q[1]-q[0])
         index = -1
-        for i in range(0, (q.shape[0])-1):
+        for i in range(0, (q.shape[0])-self.order):
             index = index + 1
             valoresFinales2[index] = abs(q[i]*derivadaHq[index] - tq[index])
 

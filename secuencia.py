@@ -12,7 +12,7 @@ class Secuencia:
         self.columnas = len(self.df.index)
 
     def separar(self):
-        if os.path.isfile("ArchivosGenerados/Secuencias/Codificante/" + self.nombreArchivo + "_codificante.fasta") == False and os.path.isfile("ArchivosGenerados/Secuencias/Codificante/" + self.nombreArchivo + "_noCodificante.fasta") == False and os.path.isfile("ArchivosGenerados/Secuencias/Codificante/" + self.nombreArchivo + "_completa.fasta") == False:
+        if os.path.isfile("ArchivosGenerados/Secuencias/Codificante/" + self.nombreArchivo + "_codificante.fasta") == False and os.path.isfile("ArchivosGenerados/Secuencias/NoCodificante/" + self.nombreArchivo + "_noCodificante.fasta") == False and os.path.isfile("ArchivosGenerados/Secuencias/Completa/" + self.nombreArchivo + "_completa.fasta") == False:
             tablaCromosoma = self.filtrarTabla().reset_index(drop=True)
             for i in range(len(tablaCromosoma.index)):
                 if i == 0:
@@ -82,6 +82,15 @@ class Secuencia:
                                 (self.data[tablaCromosoma['start'][i]: tablaCromosoma['end'][i]])[
                                     :: -1].upper()
             self.almacenar()
+        else:
+            file = open("ArchivosGenerados/Secuencias/Codificante/" +
+                        self.nombreArchivo + "_codificante.fasta", "r")
+            self.codificante = file.read()
+            file.close()
+            file2 = open("ArchivosGenerados/Secuencias/NoCodificante/" +
+                         self.nombreArchivo + "_noCodificante.fasta", "r")
+            self.no_codificante = file2.read()
+            file2.close()
 
     def filtrarTabla(self):
         tablaCromosoma = self.df[(self.df['# feature'] == 'gene') & (

@@ -93,8 +93,10 @@ class ventanaDetrended(QWidget):
                         informacion["titulo"] + informacion["contenido"] + \
                         "\n" + informacion["hurst_contenido"]
                 archivo = open("ArchivosGenerados/Resultados/Completa/" +
-                               self.nombreArchivo + "_completa.fasta", "w")
+                               self.nombreArchivo + "_completa.txt", "w")
                 archivo.write(contenido)
+                archivo.write("\n El valor del delta Q es: " +
+                              str(max(resultados) - min(resultados)))
                 archivo.close()
                 self.rangoQCompleta = rangoQ
                 self.resultadosCompleta = resultados
@@ -199,9 +201,11 @@ class ventanaDetrended(QWidget):
                     informacion["titulo"] + informacion["contenido"] + \
                     "\n" + informacion["hurst_contenido"]
             archivo = open("ArchivosGenerados/Resultados/NoCodificante/" +
-                           self.nombreArchivo + "_noCodificante.fasta", "w")
+                           self.nombreArchivo + "_noCodificante.txt", "w")
             archivo.write(contenido)
-            archivo.close
+            archivo.write("\n El valor del delta Q es: " +
+                          str(max(resultados) - min(resultados)))
+            archivo.close()
             self.rangoQNoCodificante = rangoQ
             self.resultadosNoCodificante = resultados
             self.rangoFNoCodificantes, self.resultadosFNoCodificantes = detrended.fdealpha(
@@ -270,9 +274,11 @@ class ventanaDetrended(QWidget):
                     informacion['titulo'] + informacion['contenido'] + \
                     "\n" + informacion['hurst_contenido']
             archivo = open("ArchivosGenerados/Resultados/Codificante/" +
-                           self.nombreArchivo + "_codificante.fasta", "w")
+                           self.nombreArchivo + "_codificante.txt", "w")
             archivo.write(contenido)
-            archivo.close
+            archivo.write("\n El valor del delta Q es: " +
+                          str(max(resultados) - min(resultados)))
+            archivo.close()
             self.rangoQCodificante = rangoQ
             self.resultadosCodificante = resultados
             self.rangoFCodificantes, self.resultadosFCodificantes = detrended.fdealpha(

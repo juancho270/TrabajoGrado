@@ -65,7 +65,7 @@ class Detrended2D:
                 covarianzaSubconjuntos[k][l] = Z.reshape((self.s, self.s))
         return covarianzaSubconjuntos
 
-    def funcionF2Img(self, sumSubconjuntosx, sumSubconjuntosy, covarianzaSubConjuntosx, covarianzaSubConjuntosy):
+    """ def funcionF2Img(self, sumSubconjuntosx, sumSubconjuntosy, covarianzaSubConjuntosx, covarianzaSubConjuntosy):
         F = np.zeros((self.Ms, self.Ns))
         for k in range(0, self.Ms):
             for l in range(0, self.Ns):
@@ -76,7 +76,7 @@ class Detrended2D:
                             (abs(sumSubconjuntosx[k][l][i][j] - covarianzaSubConjuntosx[k][l][i][j]) * abs(
                                 sumSubconjuntosy[k][l][i][j] - covarianzaSubConjuntosy[k][l][i][j]))
                 F[k][l] = (1/self.s**2) * count
-        return F
+        return F """
 
     def funcionf(self, sumSubconjuntos, covarianzaSubConjuntos):
         F = np.zeros((self.Ms, self.Ns))
@@ -121,16 +121,28 @@ class Detrended2D:
         plt.savefig("Detrended2D/graficah(q)vsq/" +
                     nombre + "_graficaq.jpg")
         plt.close()
-
+        file = open("Detrended2D/Resultados/" +
+                    nombre + "_resultados.txt", 'w')
+        for i in range(0, q.shape[0]):
+            file.write(
+                "\n Para q = " + str(q[i]) + ",el valor DFA es:" + str(valoresFinales[i]))
+        file.write("\n El delta Q es: " +
+                   str(max(valoresFinales) - min(valoresFinales)))
+        file.close()
         valoresFinales2 = np.zeros(q.shape[0] - 1)
         tq = np.zeros(q.shape)
         posicionFinal = 0
         for i in q:
             tq[posicionFinal] = (i * valoresFinales[posicionFinal]) - 2
             posicionFinal = posicionFinal + 1
-
-        print(valoresFinales, tq)
-        derivadaHq = np.diff(tq, 1)/(q[1]-q[0])
+        plt.plot(q, tq, 'b-')
+        plt.xlabel('q')
+        plt.ylabel('tq')
+        plt.title('q vs tq')
+        plt.savefig("Detrended2D/qvstq/" +
+                    nombre + "_tqvsq.jpg")
+        plt.close()
+        derivadaHq = np.diff(tq)/(q[1]-q[0])
         index = -1
         for i in range(0, (q.shape[0])-1):
             index = index + 1
@@ -140,6 +152,7 @@ class Detrended2D:
         plt.savefig("Detrended2D/espectroMultifractal/" +
                     nombre + "_espectro.jpg")
         plt.close()
+
         return valoresFinales, valoresFinales2
 
 

@@ -27,13 +27,18 @@ class Archivo:
     def recuperar(self, ventana):
         nombrearch = QFileDialog.getOpenFileName(
             ventana, 'Open File', "", " (*.txt *.fasta *.fna )")
-
         if nombrearch[0] != '':
             archi1 = open(nombrearch[0], "r", encoding="utf-8")
             tamano = len(nombrearch[0].split('/'))
             self.nombreArchivo = nombrearch[0].split(
                 '/')[tamano-1].split('.')[0]
-            self.datos = (self.eliminarMarcas(archi1.read()))
+            if os.path.isfile("ArchivosGenerados/Secuencias/Completa/" + self.nombreArchivo + "_completa.fasta") == False:
+                self.datos = (self.eliminarMarcas(archi1.read()))
+            else:
+                file = open("ArchivosGenerados/Secuencias/Completa/" +
+                            self.nombreArchivo + "_completa.fasta")
+                self.datos = file.read()
+                file.close()
             archi1.close()
             self.cargaDatos = True
         self.llamar()
@@ -79,11 +84,13 @@ class Archivo:
     def hacerImagenCodificante(self, nombre):
         if os.path.isfile("Imagenes/Codificante/" + nombre + "_codificante" + ".jpg") == False:
             T = imagen.chaos_game_representation2(self.codificante)
-            plt.scatter(T[:, 0], T[:, 1], s=5 ** -
-                        ((len(str(len(self.codificante))))-2), c='#000000')
+            plt.figure(figsize=(15, 15))
+            plt.scatter(T[:, 0], T[:, 1], s=0.005, c='#000000')
+            print(5 ** -
+                  ((len(str(len(self.codificante))))-2))
             plt.axis('off')
             plt.savefig("Imagenes/Codificante/" + nombre + "_codificante" + ".jpg",
-                        bbox_inches='tight', pad_inches=-0.2)
+                        bbox_inches='tight', pad_inches=-0.5)
             plt.show()
         else:
             img = mpimg.imread("Imagenes/Codificante/" +
@@ -94,11 +101,13 @@ class Archivo:
     def hacerImagenNoCodificante(self, nombre):
         if os.path.isfile("Imagenes/NoCodificante/" + nombre + "_noCodificante" + ".jpg") == False:
             T = imagen.chaos_game_representation2(self.no_codificante)
-            plt.scatter(T[:, 0], T[:, 1], s=5 ** -
-                        ((len(str(len(self.no_codificante))))-2), c='#000000')
+            plt.figure(figsize=(15, 15))
+            plt.scatter(T[:, 0], T[:, 1], s=0.005, c='#000000')
+            print(5 ** -
+                  ((len(str(len(self.codificante))))-2))
             plt.axis('off')
             plt.savefig("Imagenes/NoCodificante/" + nombre + "_noCodificante" +
-                        ".jpg", bbox_inches='tight', pad_inches=-0.2)
+                        ".jpg", bbox_inches='tight', pad_inches=-0.5)
             plt.show()
         else:
             img = mpimg.imread("Imagenes/NoCodificante/" +
@@ -109,11 +118,13 @@ class Archivo:
     def hacerImagenCompleta(self, nombre):
         if os.path.isfile("Imagenes/Completa/" + nombre + "_completa" + ".jpg") == False:
             T = imagen.chaos_game_representation2(self.datos)
-            plt.scatter(T[:, 0], T[:, 1], s=5 ** -
-                        ((len(str(len(self.datos))))-2), c='#000000')
+            plt.figure(figsize=(15, 15))
+            plt.scatter(T[:, 0], T[:, 1], s=0.005, c='#000000')
+            print(5 ** -
+                  ((len(str(len(self.codificante))))-2))
             plt.axis('off')
             plt.savefig("Imagenes/Completa/" + nombre + "_completa" +
-                        ".jpg", bbox_inches='tight', pad_inches=-0.2)
+                        ".jpg", bbox_inches='tight', pad_inches=-0.5)
             plt.close()
 
     def quitarRepeticiones(self, unaCadena, unaLetra):

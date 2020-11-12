@@ -115,11 +115,6 @@
    </item>
    <item>
     <property name="text">
-     <string>5</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
      <string>10</string>
     </property>
    </item>
@@ -146,6 +141,16 @@
    <item>
     <property name="text">
      <string>80</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>100</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>120</string>
     </property>
    </item>
   </widget>
