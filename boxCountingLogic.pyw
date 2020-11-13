@@ -8,6 +8,7 @@ from archivo import archivo
 from archivo import *
 import numpy as np
 import imageio
+import pylab as pl
 
 
 class ventanaBoxCounting(QWidget):
@@ -19,9 +20,11 @@ class ventanaBoxCounting(QWidget):
         self.ui.btnNoCodificante.clicked.connect(self.btnNoCodificanteAction)
         self.nombreArchivo = nombre
         self.ui.btnAmbos.clicked.connect(self.btnAmbosAction)
+        self.resultadosNoCodificantes = ''
+        self.resultadosCodificantes = ''
 
     def btnCodificanteAction(self):
-        rangoQ = np.zeros(1)
+        rangoQ = ''
         distancia = 1
         if self.ui.valorQ.currentText() != 'Seleccione una Opcion':
             if self.ui.valorQ.currentText() == '-1 a 1':
@@ -37,8 +40,13 @@ class ventanaBoxCounting(QWidget):
             I = imageio.imread(
                 "Imagenes/Codificante/" + self.nombreArchivo + "_codificante.jpg")/255.0
             matriz = I[0:, 0:, 0]
-            boxCounting.fractal_dimension(
+            dimension, self.resultadosCodificantes = boxCounting.fractal_dimension(
                 matriz, self.nombreArchivo + "Codificante", 'Codificante', distancia, rangoQ)
+            pl.xlabel('q')
+            pl.ylabel('H(q)')
+            pl.title('q vs H(q)')
+            pl.plot(rangoQ, self.resultadosCodificantes)
+            pl.show()
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -51,7 +59,7 @@ class ventanaBoxCounting(QWidget):
     def btnNoCodificanteAction(self):
         rangoQ = np.zeros(1)
         distancia = 1
-        if self.ui.valorQ.currentText() != 'Seleccione una Opcion':
+        if self.ui.valorQ.currentText() != 'Seleccione una Opción':
             if self.ui.valorQ.currentText() == '-1 a 1':
                 rangoQ = np.arange(-1.0, 1.0 + distancia, distancia)
             elif self.ui.valorQ.currentText() == '-3 a 3':
@@ -65,8 +73,13 @@ class ventanaBoxCounting(QWidget):
             I = imageio.imread(
                 "Imagenes/NoCodificante/" + self.nombreArchivo + "_noCodificante.jpg")/255.0
             matriz = I[0:, 0:, 0]
-            boxCounting.fractal_dimension(
+            dimension, self.resultadosNoCodificantes = boxCounting.fractal_dimension(
                 matriz, self.nombreArchivo + "_noCodificante", 'NoCodificante', distancia, rangoQ)
+            pl.xlabel('q')
+            pl.ylabel('H(q)')
+            pl.title('q vs H(q)')
+            pl.plot(rangoQ, self.resultadosNoCodificantes)
+            pl.show()
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -93,8 +106,23 @@ class ventanaBoxCounting(QWidget):
             I = imageio.imread(
                 "Imagenes/Completa/" + self.nombreArchivo + "_completa.jpg")/255.0
             matriz = I[0:, 0:, 0]
-            boxCounting.fractal_dimension(
+            dimension, fq = boxCounting.fractal_dimension(
                 matriz, self.nombreArchivo + "Completa", 'Completa', distancia, rangoQ)
+
+            p1, p2, p3 = plot(rangoQ, self.resultadosCodificantes, 'r-',
+                              rangoQ, self.resultadosNoCodificantes, 'b-', rangoQ, fq, 'g-')
+            # Etiqueta del eje Y, que es común para todas
+            pl.legend(('Left', 'Right', 'Center'),
+                      prop={'size': 10}, loc='upper right')
+
+            pl.xlabel('q')
+            pl.ylabel('H(q)')
+            pl.title('q vs H(q)')
+
+            # Creo una figura (ventana), pero indico el tamaño (x,y) en pulgadas
+            pl.savefig("boxCounting/Completa/" +
+                       self.nombreArchivo + "_espectroqvshq.jpg")
+            pl.show()
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)

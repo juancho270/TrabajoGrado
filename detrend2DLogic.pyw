@@ -140,7 +140,7 @@ class ventanaDetrended2D(QWidget):
             p1, p2, p3 = plot(rangoQ, hCodificante, 'r-',
                               rangoQ, hNoCodificante, 'b-', rangoQ, hSeqComplete, 'g-')
             # Etiqueta del eje Y, que es común para todas
-            plt.legend(('SC', 'SNC', 'CC'),
+            plt.legend(('Left', 'Right', 'Center'),
                        prop={'size': 10}, loc='upper right')
 
             plt.xlabel('q')
@@ -159,7 +159,7 @@ class ventanaDetrended2D(QWidget):
                               rangoQ2, fNoCodificante, 'r-', rangoQ2, fSeqComplete, 'g-')
             # Etiqueta del eje X, que es común para todas
             # Etiqueta del eje Y, que es común para todas
-            plt.legend(('SC', 'SNC', 'CC'),
+            plt.legend(('Left', 'Right', 'Center'),
                        prop={'size': 10}, loc='upper right')
 
             plt.xlabel('α')

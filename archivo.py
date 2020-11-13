@@ -78,16 +78,14 @@ class Archivo:
         archi3 = open("ArchivosGenerados/Secuencias/NoCodificante/" +
                       self.nombreArchivo + "_noCodificante.fasta", "r", encoding="utf-8")
         contenido3 = archi3.read()
-        self.no_codificante = contenido3
+        self.nocodificante = contenido3
         archi3.close()
 
     def hacerImagenCodificante(self, nombre):
         if os.path.isfile("Imagenes/Codificante/" + nombre + "_codificante" + ".jpg") == False:
             T = imagen.chaos_game_representation2(self.codificante)
-            plt.figure(figsize=(15, 15))
+            plt.figure(figsize=(14.51, 14.6))
             plt.scatter(T[:, 0], T[:, 1], s=0.005, c='#000000')
-            print(5 ** -
-                  ((len(str(len(self.codificante))))-2))
             plt.axis('off')
             plt.savefig("Imagenes/Codificante/" + nombre + "_codificante" + ".jpg",
                         bbox_inches='tight', pad_inches=-0.5)
@@ -100,11 +98,9 @@ class Archivo:
 
     def hacerImagenNoCodificante(self, nombre):
         if os.path.isfile("Imagenes/NoCodificante/" + nombre + "_noCodificante" + ".jpg") == False:
-            T = imagen.chaos_game_representation2(self.no_codificante)
-            plt.figure(figsize=(15, 15))
+            T = imagen.chaos_game_representation2(self.nocodificante)
+            plt.figure(figsize=(14.51, 14.6))
             plt.scatter(T[:, 0], T[:, 1], s=0.005, c='#000000')
-            print(5 ** -
-                  ((len(str(len(self.codificante))))-2))
             plt.axis('off')
             plt.savefig("Imagenes/NoCodificante/" + nombre + "_noCodificante" +
                         ".jpg", bbox_inches='tight', pad_inches=-0.5)
@@ -118,10 +114,8 @@ class Archivo:
     def hacerImagenCompleta(self, nombre):
         if os.path.isfile("Imagenes/Completa/" + nombre + "_completa" + ".jpg") == False:
             T = imagen.chaos_game_representation2(self.datos)
-            plt.figure(figsize=(15, 15))
+            plt.figure(figsize=(14.51, 14.6))
             plt.scatter(T[:, 0], T[:, 1], s=0.005, c='#000000')
-            print(5 ** -
-                  ((len(str(len(self.codificante))))-2))
             plt.axis('off')
             plt.savefig("Imagenes/Completa/" + nombre + "_completa" +
                         ".jpg", bbox_inches='tight', pad_inches=-0.5)

@@ -32,7 +32,7 @@ class BoxCounting:
                         cuadros = cuadros+1
                     else:
                         suma = suma + S[i][j]**q
-            return (np.log(suma / ((Z.shape[0]*Z.shape[1]) - cuadros)))/(q-1)
+            return (np.log(suma / ((Z.shape[0]/k)**2)))/(q-1)
 
         # Transform Z into a binary array
 
@@ -85,9 +85,9 @@ class BoxCounting:
         pl.title('q vs H(q)')
         print(q, datos[::-1])
         pl.plot(q, datos[::-1])
-        pl.show()
         pl.savefig("boxCounting/" + carpeta + "/" +
                    name + "_espectroqvshq.jpg")
+        pl.close()
         return -coeffs[0], datos[::-1]
 
 

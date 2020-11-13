@@ -115,42 +115,47 @@
    </item>
    <item>
     <property name="text">
-     <string>10</string>
+     <string>2</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>20</string>
+     <string>4</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>50</string>
+     <string>8</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>60</string>
+     <string>16</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>70</string>
+     <string>32</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>80</string>
+     <string>64</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>100</string>
+     <string>128</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>120</string>
+     <string>256</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>512</string>
     </property>
    </item>
   </widget>
