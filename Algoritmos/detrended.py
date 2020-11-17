@@ -32,6 +32,7 @@ class Detrended:
 
         y = np.zeros([time.size])
         # Integrate the process
+        y[0] = (time[0] - media)
         for i in range(1, time.size):
             y[i] = y[i-1] + (time[i-1] - media)
         return y

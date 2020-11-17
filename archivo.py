@@ -100,7 +100,7 @@ class Archivo:
         if os.path.isfile("Imagenes/NoCodificante/" + nombre + "_noCodificante" + ".jpg") == False:
             T = imagen.chaos_game_representation2(self.nocodificante)
             plt.figure(figsize=(14.51, 14.6))
-            plt.scatter(T[:, 0], T[:, 1], s=0.005, c='#000000')
+            plt.scatter(T[:, 0], T[:, 1], s=0.05, c='#000000')
             plt.axis('off')
             plt.savefig("Imagenes/NoCodificante/" + nombre + "_noCodificante" +
                         ".jpg", bbox_inches='tight', pad_inches=-0.5)

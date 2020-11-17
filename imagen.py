@@ -1,7 +1,3 @@
-import collections
-from collections import OrderedDict
-from matplotlib import pyplot as plt
-from matplotlib import cm
 import pylab
 import math
 from six.moves import xrange
@@ -19,25 +15,14 @@ class Imagen:
         G = (1., 1.)
         C = (0., 1.)
 
-        # Intentar:
-        # Poner vertices directamente
-        # Poner más vértices (tener cuidado con el choice)
-        #
         V = [A, T, G, C]
         p0 = (0.5, 0.5)
         arreglo = [p0]
 
-        # Intentar
-        # Definición de punto medio con def
-        # ¿Qué pasa si no es el punto medio?
-        #
-        def pmedio(x, y): return (0.5*(x[0] + y[0]), 0.5*(x[1] + y[1]))
-        # Poner esto hasta arriba
-        #
+        def pmedio(x, y):
+            return (0.5*(x[0] + y[0]), 0.5*(x[1] + y[1]))
+
         for i in secuencia:
-            # Intentar
-            # Definición propia de random
-            #
             vact = V[0]
             if i == 'A':
                 vact = V[0]
@@ -50,9 +35,6 @@ class Imagen:
             pact = arreglo[-1]
             psig = pmedio(pact, vact)
             arreglo.append(psig)
-
-        # for p in T:
-        #   print("{0} \t {1}".format(p[0],p[1]))
 
         arreglo = array(arreglo)
         return arreglo

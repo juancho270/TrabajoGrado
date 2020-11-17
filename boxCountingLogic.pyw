@@ -40,7 +40,7 @@ class ventanaBoxCounting(QWidget):
             I = imageio.imread(
                 "Imagenes/Codificante/" + self.nombreArchivo + "_codificante.jpg")/255.0
             matriz = I[0:, 0:, 0]
-            dimension, self.resultadosCodificantes = boxCounting.fractal_dimension(
+            self.resultadosCodificantes = boxCounting.fractal_dimension(
                 matriz, self.nombreArchivo + "Codificante", 'Codificante', distancia, rangoQ)
             pl.xlabel('q')
             pl.ylabel('H(q)')
@@ -73,7 +73,7 @@ class ventanaBoxCounting(QWidget):
             I = imageio.imread(
                 "Imagenes/NoCodificante/" + self.nombreArchivo + "_noCodificante.jpg")/255.0
             matriz = I[0:, 0:, 0]
-            dimension, self.resultadosNoCodificantes = boxCounting.fractal_dimension(
+            self.resultadosNoCodificantes = boxCounting.fractal_dimension(
                 matriz, self.nombreArchivo + "_noCodificante", 'NoCodificante', distancia, rangoQ)
             pl.xlabel('q')
             pl.ylabel('H(q)')
@@ -106,7 +106,7 @@ class ventanaBoxCounting(QWidget):
             I = imageio.imread(
                 "Imagenes/Completa/" + self.nombreArchivo + "_completa.jpg")/255.0
             matriz = I[0:, 0:, 0]
-            dimension, fq = boxCounting.fractal_dimension(
+            fq = boxCounting.fractal_dimension(
                 matriz, self.nombreArchivo + "Completa", 'Completa', distancia, rangoQ)
 
             p1, p2, p3 = plot(rangoQ, self.resultadosCodificantes, 'r-',
