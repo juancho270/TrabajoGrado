@@ -146,7 +146,7 @@ class ventanaDetrended(QWidget):
                                   self.rangoQCompleta, self.resultadosCompleta, 'g-')
 
             # Añado leyenda, tamaño de letra 10, en esquina superior derecha
-            plt.legend(('Left', 'Right', 'Center'),
+            plt.legend(('Codificante', 'No Codificante', 'Completa'),
                        prop={'size': 10}, loc='upper right')
 
             plt.xlabel('q')
@@ -162,7 +162,7 @@ class ventanaDetrended(QWidget):
                                   self.rangoFCompletos, self.resultadosFCompletos, 'g-')
 
             # Añado leyenda, tamaño de letra 10, en esquina superior derecha
-            plt.legend(('Left', 'Right', 'Center'),
+            plt.legend(('Codificante', 'No Codificante', 'Completa'),
                        prop={'size': 10}, loc='upper right')
 
             plt.xlabel('α')
