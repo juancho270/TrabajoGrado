@@ -1,17 +1,23 @@
 import numpy as np
 import imageio
 import pylab as pl
+import math
 
 
 class BoxCounting:
     def __init__(self,):
         self.datos = ''
+        self.pixelesTotales = 0
 
     def fractal_dimension(self, Z, name, carpeta, distancia, rangoQ):
         # Only for 2d image
         assert(len(Z.shape) == 2)
 
         # From https://github.com/rougier/numpy-100 (#87)
+        def contarPixeles(self, matriz):
+            for i in range(0, matriz.shape[0]):
+                for j in range(0, matriz.shape[1]):
+                    self.pixelesTotales = self.pixelesTotales + matriz[i][j]
 
         def boxcountFP(Z, k, q):
             # se divide la imagen en la escala k y se suma cada division
@@ -24,10 +30,10 @@ class BoxCounting:
                 for j in range(0, S.shape[1]):
                     if S[i][j] != 0:
                         if q != 1:
-                            suma = suma + ((S[i][j]/k*k)**q)
+                            suma = suma + ((S[i][j]/self.pixelesTotales)**q)
                         else:
                             suma = suma + \
-                                (S[i][j]/(k**2))
+                                math.log(S[i][j]/self.pixelesTotales)
             return (np.log(suma)/(q-1))
 
         # Transform Z into a binary array

@@ -70,13 +70,6 @@ class Detrended:
             tq[posicionFinal] = (i * valoresFinales[posicionFinal]) - 1
             posicionFinal = posicionFinal + 1
 
-        plt.plot(q, tq, 'b-')
-        plt.xlabel('q')
-        plt.ylabel('tq')
-        plt.title('q vs tq')
-        plt.savefig("Imagenes/Graficas/qvstq/" +
-                    nombre)
-        plt.close()
         derivadaHq = np.diff(tq)/(q[1]-q[0])
         index = -1
         for i in range(0, (q.shape[0])-self.order):
@@ -86,12 +79,17 @@ class Detrended:
         posicion = np.where(valoresFinales2 == np.amax(valoresFinales2))
         valoresFinales3 = np.delete(valoresFinales2, posicion)
         q2 = np.delete(q, posicion)[0:q.shape[0]-2]
+
+        plt.xlabel('α')
+        plt.ylabel('f(α)')
+        plt.title('α vs f(α)')
+        plt.show()
         plt.plot(q2, valoresFinales3, 'b-')
         plt.savefig("Imagenes/Graficas/Espectro/" +
                     nombre)
         plt.close()
 
-        return q2, valoresFinales3
+        return q2, valoresFinales3, tq
 
 
 detrended = Detrended()
