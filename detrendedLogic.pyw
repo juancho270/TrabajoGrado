@@ -121,7 +121,7 @@ class ventanaDetrended(QWidget):
                 plt.title('q vs t(q)')
                 plt.plot(rangoQ, self.tqCompleta, "b-", label="Completa")
                 plt.legend(
-                    prop={'size': 10}, loc='upper right')
+                    prop={'size': 10}, loc='lower right')
                 plt.savefig("Imagenes/Graficas/qvstq/Completa/" +
                             self.nombreArchivo + "_tq_Completa")
                 plt.close()
@@ -135,7 +135,7 @@ class ventanaDetrended(QWidget):
                          'r-', label="NoCodificante")
                 plt.plot(rangoQ, self.tqCompleta, 'g-', label="Completa")
                 plt.legend(
-                    prop={'size': 10}, loc='upper right')
+                    prop={'size': 10}, loc='lower right')
                 plt.savefig("Imagenes/Graficas/qvstq/Todas/" +
                             self.nombreArchivo + "_tq_todas")
                 plt.close()
@@ -246,7 +246,7 @@ class ventanaDetrended(QWidget):
             plt.title('q vs t(q)')
             plt.plot(rangoQ, self.tqNoCodificante,
                      "b-", label="No Codificante")
-            plt.legend(prop={'size': 10}, loc='upper right')
+            plt.legend(prop={'size': 10}, loc='lower right')
             plt.savefig("Imagenes/Graficas/qvstq/NoCodificante/" +
                         self.nombreArchivo + "_tq_NoCodificante")
             plt.close()
@@ -336,7 +336,7 @@ class ventanaDetrended(QWidget):
             plt.title('q vs t(q)')
             plt.plot(rangoQ, self.tqCodificante, "b-", label="Codificante")
             plt.legend(
-                prop={'size': 10}, loc='upper right')
+                prop={'size': 10}, loc='lower right')
             plt.savefig("Imagenes/Graficas/qvstq/Codificante/" +
                         self.nombreArchivo + "_tq_Codificante")
 
