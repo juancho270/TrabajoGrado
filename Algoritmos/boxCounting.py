@@ -1,6 +1,7 @@
 import numpy as np
 import imageio
 import pylab as pl
+import math
 
 
 class BoxCounting:
@@ -18,6 +19,10 @@ class BoxCounting:
         assert(len(Z.shape) == 2)
 
         # From https://github.com/rougier/numpy-100 (#87)
+        def contarPixeles(self, matriz):
+            for i in range(0, matriz.shape[0]):
+                for j in range(0, matriz.shape[1]):
+                    self.pixelesTotales = self.pixelesTotales + matriz[i][j]
 
         def boxcountFP(Z, k, q):
             # se divide la imagen en la escala k y se suma cada division
