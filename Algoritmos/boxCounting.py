@@ -8,6 +8,11 @@ class BoxCounting:
     def __init__(self,):
         self.datos = ''
         self.pixelesTotales = 0
+        
+    def contarPixeles(self, matriz):
+        for i in range(0,matriz.shape[0]):
+            for j in range(0, matriz.shape[1]):
+                self.pixelesTotales = self.pixelesTotales + matriz[i][j]
 
     def fractal_dimension(self, Z, name, carpeta, distancia, rangoQ):
         # Only for 2d image
@@ -70,7 +75,7 @@ class BoxCounting:
         pl.title('q vs H(q)')
         print(q, datos)
         pl.plot(q, datos)
-        pl.savefig("boxCounting/" + carpeta + "/" +
+        pl.savefig("BoxCounting/" + carpeta + "/" +
                    name + "_espectroqvshq.jpg")
         pl.close()
         return datos

@@ -24,13 +24,13 @@ class Imagen:
 
         for i in secuencia:
             vact = V[0]
-            if i == 'A':
+            if i.upper() == 'A':
                 vact = V[0]
-            elif i == 'T':
+            elif i.upper() == 'T':
                 vact = V[1]
-            elif i == 'G':
+            elif i.upper() == 'G':
                 vact = V[2]
-            elif i == 'C':
+            elif i.upper() == 'C':
                 vact = V[3]
             pact = arreglo[-1]
             psig = pmedio(pact, vact)
