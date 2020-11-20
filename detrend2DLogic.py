@@ -140,11 +140,11 @@ class ventanaDetrended2D(QWidget):
             plt.plot(rangoQ, tqNoCodificante)
             plt.plot(rangoQ, tqSeqComplete)
             plt.legend(('SC', 'SNC', 'CC'),
-                       prop={'size': 10}, loc='upper right')
+                       prop={'size': 10}, loc='lower right')
             plt.xlabel('q')
             plt.ylabel('t(q)')
             plt.title('q vs t(q)')
-            plt.savefig("Detrended2D/graficah(q)vsq/qvstq/SecuenciaCompleta" +
+            plt.savefig("Detrended2D/qvstq/SecuenciaCompleta/" +
                         self.nombreArchivo + "_secuenciaCompleta.jpg")
             plt.close()
             plt.subplot(121)
