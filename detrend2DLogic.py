@@ -235,7 +235,7 @@ class ventanaDetrended2D(QWidget):
                 sumAcomulada)
             funcionf = detrended2D.funcionf(sumAcomulada, covarianza)
             fluctuaciones = detrended2D.funcionFluctuacion(rangoQ, funcionf)
-            hNoCodificante, fNoCodificante = detrended2D.graficarGuardar(
+            hNoCodificante, fNoCodificante, tqNoCodificante = detrended2D.graficarGuardar(
                 fluctuaciones, rangoQ, "NoCodificante/" + self.nombreArchivo + "_noCodificante")
 
             # Figura con una fila y tres columnas, activo primer subgráfico
@@ -317,7 +317,7 @@ class ventanaDetrended2D(QWidget):
                 sumAcomulada)
             funcionf = detrended2D.funcionf(sumAcomulada, covarianza)
             fluctuaciones = detrended2D.funcionFluctuacion(rangoQ, funcionf)
-            hCodificante, fCodificante = detrended2D.graficarGuardar(
+            hCodificante, fCodificante, tqCodificante = detrended2D.graficarGuardar(
                 fluctuaciones, rangoQ, "Codificante/" + self.nombreArchivo + "_Codificante")
 
             # Figura con una fila y tres columnas, activo primer subgráfico
