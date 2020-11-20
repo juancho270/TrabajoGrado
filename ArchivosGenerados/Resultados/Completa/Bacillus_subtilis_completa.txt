@@ -1,0 +1,314 @@
+Para q = -10.0: 
+Para la escala 1 805534, el valor DFA es: [56324143.23766363]
+Para la escala 2 1611069, el valor DFA es: [1.44317574e+08]
+Para la escala 3 2416604, el valor DFA es: [5.9163773e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08960049e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.9319633]
+Para q = -9.5: 
+Para la escala 1 805534, el valor DFA es: [56688511.30748598]
+Para la escala 2 1611069, el valor DFA es: [1.45345545e+08]
+Para la escala 3 2416604, el valor DFA es: [5.93215391e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08961142e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.92721352]
+Para q = -9.0: 
+Para la escala 1 805534, el valor DFA es: [57087708.09997734]
+Para la escala 2 1611069, el valor DFA es: [1.46488239e+08]
+Para la escala 3 2416604, el valor DFA es: [5.94897887e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08962235e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.92202129]
+Para q = -8.5: 
+Para la escala 1 805534, el valor DFA es: [57527098.62807402]
+Para la escala 2 1611069, el valor DFA es: [1.47764669e+08]
+Para la escala 3 2416604, el valor DFA es: [5.96691991e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08963329e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.91632121]
+Para q = -8.0: 
+Para la escala 1 805534, el valor DFA es: [58013194.0354327]
+Para la escala 2 1611069, el valor DFA es: [1.49197968e+08]
+Para la escala 3 2416604, el valor DFA es: [5.98604498e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08964422e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.91003491]
+Para q = -7.5: 
+Para la escala 1 805534, el valor DFA es: [58553951.58765072]
+Para la escala 2 1611069, el valor DFA es: [1.50816492e+08]
+Para la escala 3 2416604, el valor DFA es: [6.00642088e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08965515e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.90306797]
+Para q = -7.0: 
+Para la escala 1 805534, el valor DFA es: [59159164.62840454]
+Para la escala 2 1611069, el valor DFA es: [1.52655266e+08]
+Para la escala 3 2416604, el valor DFA es: [6.02811153e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08966609e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.89530611]
+Para q = -6.5: 
+Para la escala 1 805534, el valor DFA es: [59840973.0277774]
+Para la escala 2 1611069, el valor DFA es: [1.54757908e+08]
+Para la escala 3 2416604, el valor DFA es: [6.05117594e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08967702e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.88661035]
+Para q = -6.0: 
+Para la escala 1 805534, el valor DFA es: [60614536.66714408]
+Para la escala 2 1611069, el valor DFA es: [1.57179229e+08]
+Para la escala 3 2416604, el valor DFA es: [6.07566568e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08968796e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.87681099]
+Para q = -5.5: 
+Para la escala 1 805534, el valor DFA es: [61498932.06953806]
+Para la escala 2 1611069, el valor DFA es: [1.5998877e+08]
+Para la escala 3 2416604, el valor DFA es: [6.10162208e+08]
+Para la escala 4 3222139, el valor DFA es: [3.0896989e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.86569993]
+Para q = -5.0: 
+Para la escala 1 805534, el valor DFA es: [62518358.03475837]
+Para la escala 2 1611069, el valor DFA es: [1.63275708e+08]
+Para la escala 3 2416604, el valor DFA es: [6.12907303e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08970983e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.85302097]
+Para q = -4.5: 
+Para la escala 1 805534, el valor DFA es: [63703773.21379106]
+Para la escala 2 1611069, el valor DFA es: [1.67155763e+08]
+Para la escala 3 2416604, el valor DFA es: [6.15802962e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08972077e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.83845753]
+Para q = -4.0: 
+Para la escala 1 805534, el valor DFA es: [65095138.66001261]
+Para la escala 2 1611069, el valor DFA es: [1.71781058e+08]
+Para la escala 3 2416604, el valor DFA es: [6.1884827e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08973171e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.82161712]
+Para q = -3.5: 
+Para la escala 1 805534, el valor DFA es: [66744494.82683862]
+Para la escala 2 1611069, el valor DFA es: [1.77354358e+08]
+Para la escala 3 2416604, el valor DFA es: [6.22039958e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08974265e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.80201223]
+Para q = -3.0: 
+Para la escala 1 805534, el valor DFA es: [68720129.9737905]
+Para la escala 2 1611069, el valor DFA es: [1.84149529e+08]
+Para la escala 3 2416604, el valor DFA es: [6.25372121e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08975359e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.77903821]
+Para q = -2.5: 
+Para la escala 1 805534, el valor DFA es: [71111981.60964711]
+Para la escala 2 1611069, el valor DFA es: [1.92539882e+08]
+Para la escala 3 2416604, el valor DFA es: [6.28836001e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08976453e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.75195245]
+Para q = -2.0: 
+Para la escala 1 805534, el valor DFA es: [74037859.0193925]
+Para la escala 2 1611069, el valor DFA es: [2.03033298e+08]
+Para la escala 3 2416604, el valor DFA es: [6.32419888e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08977547e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.71986819]
+Para q = -1.5: 
+Para la escala 1 805534, el valor DFA es: [77648462.13489257]
+Para la escala 2 1611069, el valor DFA es: [2.16302899e+08]
+Para la escala 3 2416604, el valor DFA es: [6.36109139e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08978641e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.68179607]
+Para q = -1.0: 
+Para la escala 1 805534, el valor DFA es: [82125595.2201506]
+Para la escala 2 1611069, el valor DFA es: [2.3317651e+08]
+Para la escala 3 2416604, el valor DFA es: [6.39886367e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08979734e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.63679707]
+Para q = 0.5: 
+Para la escala 1 805534, el valor DFA es: [1.02395115e+08]
+Para la escala 2 1611069, el valor DFA es: [3.11824659e+08]
+Para la escala 3 2416604, el valor DFA es: [6.51539148e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08983016e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.46007355]
+Para q = 1.0: 
+Para la escala 1 805534, el valor DFA es: [1.11427681e+08]
+Para la escala 2 1611069, el valor DFA es: [3.46059656e+08]
+Para la escala 3 2416604, el valor DFA es: [6.55454594e+08]
+Para la escala 4 3222139, el valor DFA es: [3.0898411e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.39344714]
+Para q = 1.5: 
+Para la escala 1 805534, el valor DFA es: [1.21101411e+08]
+Para la escala 2 1611069, el valor DFA es: [3.81257432e+08]
+Para la escala 3 2416604, el valor DFA es: [6.59346696e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08985204e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.32877129]
+Para q = 2.0: 
+Para la escala 1 805534, el valor DFA es: [1.30895566e+08]
+Para la escala 2 1611069, el valor DFA es: [4.15169557e+08]
+Para la escala 3 2416604, el valor DFA es: [6.63193026e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08986298e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.26924155]
+Para q = 2.5: 
+Para la escala 1 805534, el valor DFA es: [1.40331931e+08]
+Para la escala 2 1611069, el valor DFA es: [4.46249845e+08]
+Para la escala 3 2416604, el valor DFA es: [6.66972721e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08987392e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.21666757]
+Para q = 3.0: 
+Para la escala 1 805534, el valor DFA es: [1.49080509e+08]
+Para la escala 2 1611069, el valor DFA es: [4.73800135e+08]
+Para la escala 3 2416604, el valor DFA es: [6.70667024e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08988486e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.17150418]
+Para q = 3.5: 
+Para la escala 1 805534, el valor DFA es: [1.56977796e+08]
+Para la escala 2 1611069, el valor DFA es: [4.97753385e+08]
+Para la escala 3 2416604, el valor DFA es: [6.74259673e+08]
+Para la escala 4 3222139, el valor DFA es: [3.0898958e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.13330761]
+Para q = 4.0: 
+Para la escala 1 805534, el valor DFA es: [1.63989109e+08]
+Para la escala 2 1611069, el valor DFA es: [5.18388345e+08]
+Para la escala 3 2416604, el valor DFA es: [6.77737144e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08990674e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.1012127]
+Para q = 4.5: 
+Para la escala 1 805534, el valor DFA es: [1.70158015e+08]
+Para la escala 2 1611069, el valor DFA es: [5.36119895e+08]
+Para la escala 3 2416604, el valor DFA es: [6.81088733e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08991768e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.07425411]
+Para q = 5.0: 
+Para la escala 1 805534, el valor DFA es: [1.75565784e+08]
+Para la escala 2 1611069, el valor DFA es: [5.5138107e+08]
+Para la escala 3 2416604, el valor DFA es: [6.84306513e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08992862e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.05153045]
+Para q = 5.5: 
+Para la escala 1 805534, el valor DFA es: [1.80305646e+08]
+Para la escala 2 1611069, el valor DFA es: [5.64568918e+08]
+Para la escala 3 2416604, el valor DFA es: [6.8738518e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08993956e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.0322665]
+Para q = 6.0: 
+Para la escala 1 805534, el valor DFA es: [1.84468856e+08]
+Para la escala 2 1611069, el valor DFA es: [5.76025905e+08]
+Para la escala 3 2416604, el valor DFA es: [6.9032182e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08995049e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.01582271]
+Para q = 6.5: 
+Para la escala 1 805534, el valor DFA es: [1.88138289e+08]
+Para la escala 2 1611069, el valor DFA es: [5.86038403e+08]
+Para la escala 3 2416604, el valor DFA es: [6.93115625e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08996143e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [2.00168242]
+Para q = 7.0: 
+Para la escala 1 805534, el valor DFA es: [1.91386267e+08]
+Para la escala 2 1611069, el valor DFA es: [5.94842217e+08]
+Para la escala 3 2416604, el valor DFA es: [6.95767583e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08997237e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [1.9894321]
+Para q = 7.5: 
+Para la escala 1 805534, el valor DFA es: [1.94274527e+08]
+Para la escala 2 1611069, el valor DFA es: [6.0263022e+08]
+Para la escala 3 2416604, el valor DFA es: [6.9828017e+08]
+Para la escala 4 3222139, el valor DFA es: [3.0899833e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [1.97874167]
+Para q = 8.0: 
+Para la escala 1 805534, el valor DFA es: [1.96855142e+08]
+Para la escala 2 1611069, el valor DFA es: [6.09559928e+08]
+Para la escala 3 2416604, el valor DFA es: [7.00657045e+08]
+Para la escala 4 3222139, el valor DFA es: [3.08999424e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [1.96934733]
+Para q = 8.5: 
+Para la escala 1 805534, el valor DFA es: [1.99171784e+08]
+Para la escala 2 1611069, el valor DFA es: [6.15760185e+08]
+Para la escala 3 2416604, el valor DFA es: [7.02902779e+08]
+Para la escala 4 3222139, el valor DFA es: [3.09000517e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [1.96103745]
+Para q = 9.0: 
+Para la escala 1 805534, el valor DFA es: [2.01261004e+08]
+Para la escala 2 1611069, el valor DFA es: [6.21336749e+08]
+Para la escala 3 2416604, el valor DFA es: [7.05022607e+08]
+Para la escala 4 3222139, el valor DFA es: [3.09001611e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [1.9536414]
+Para q = 9.5: 
+Para la escala 1 805534, el valor DFA es: [2.03153409e+08]
+Para la escala 2 1611069, el valor DFA es: [6.2637683e+08]
+Para la escala 3 2416604, el valor DFA es: [7.07022214e+08]
+Para la escala 4 3222139, el valor DFA es: [3.09002704e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [1.94702078]
+Para q = 10.0: 
+Para la escala 1 805534, el valor DFA es: [2.04874688e+08]
+Para la escala 2 1611069, el valor DFA es: [6.30952726e+08]
+Para la escala 3 2416604, el valor DFA es: [7.08907559e+08]
+Para la escala 4 3222139, el valor DFA es: [3.09003798e+09]
+Para la escala 5 4027674, el valor DFA es: [5.0896158e+09]
+
+el valor de hurst es: [1.94106261]
+
+ El valor del delta Q es: 0.9909006838366972

@@ -8,8 +8,9 @@ from archivo import archivo
 from archivo import *
 import numpy as np
 
-
+#Manejador de eventos para la vsta de detrended
 class ventanaDetrended(QWidget):
+    #inicializador y atributos de la clase
     def __init__(self, parent, nombre):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_detrend()
@@ -19,7 +20,7 @@ class ventanaDetrended(QWidget):
         self.ui.btnNoCodificanteA.clicked.connect(
             self.analisisNoCodificante)
         self.nombreArchivo = nombre
-        self.ui.btnAmbas.clicked.connect(self.mostrarImagen)
+        self.ui.btnAmbas.clicked.connect(self.analsisAmbas)
         self.rangoQCodificante = ''
         self.resultadosCodificante = ''
         self.rangoQNoCodificante = ''
@@ -38,12 +39,9 @@ class ventanaDetrended(QWidget):
         self.graficaCodificante = False
         self.graficaNoCodificante = False
 
-        # self.resize(pixmapNoCod.width(),pixmapNoCod.height())
 
-    def imprimir(self):
-        print('metodo')
-
-    def mostrarImagen(self):
+    #Funcion encargada de validar los parametros de entrada y realizar las graficas de las secuencaas juntas
+    def analsisAmbas(self):
         if self.graficaCodificante and self.graficaNoCodificante:
             # array de valores a representar
             rangoQ = np.zeros(1)
@@ -81,11 +79,14 @@ class ventanaDetrended(QWidget):
                     rango1 = np.arange(-20.0, -0.5, distancia)
                     rango2 = np.arange(0.5, 20.0 + distancia, distancia)
                     rangoQ = np.concatenate((rango1, rango2), axis=0)
-
+                #Se abre el archivo con la secuencia
                 data = detrended.lineaTiempo("ArchivosGenerados/Secuencias/Completa/" +
                                              self.nombreArchivo + "_completa.fasta")
+                #Tiempo de la secuencia
                 time = detrended.transformada(data)
+                #Divsiones
                 lag = detrended.divisiones(time, escalaSeleccionada)
+                #dq
                 resultados = np.zeros(rangoQ.size)
                 contenido = ''
                 for i in range(0, rangoQ.size):
@@ -132,7 +133,7 @@ class ventanaDetrended(QWidget):
 
                 plt.plot(rangoQ, self.tqCodificante, 'r-', label="SC")
                 plt.plot(rangoQ, self.tqNoCodificante,
-                         'b-', label="NoCodificante")
+                         'b-', label="SNC")
                 plt.plot(rangoQ, self.tqCompleta, 'g-', label="CC")
                 plt.legend(
                     prop={'size': 10}, loc='lower right')

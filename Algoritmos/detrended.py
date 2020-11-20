@@ -18,11 +18,11 @@ class Detrended:
         for char in contenido:
             if char == 'A':
                 data.append(1.)
-            elif char == 'T':
+            elif char == 'C':
                 data.append(2.)
             elif char == 'G':
                 data.append(3.)
-            elif char == 'C':
+            elif char == 'T':
                 data.append(4.)
         time = np.array(data)
         return time
