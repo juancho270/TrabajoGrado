@@ -130,9 +130,9 @@ class ventanaDetrended(QWidget):
                 plt.ylabel('t(q)')
                 plt.title('q vs t(q)')
 
-                plt.plot(rangoQ, self.tqCodificante, 'b-', label="SC")
+                plt.plot(rangoQ, self.tqCodificante, 'r-', label="SC")
                 plt.plot(rangoQ, self.tqNoCodificante,
-                         'r-', label="NoCodificante")
+                         'b-', label="NoCodificante")
                 plt.plot(rangoQ, self.tqCompleta, 'g-', label="CC")
                 plt.legend(
                     prop={'size': 10}, loc='lower right')
@@ -141,8 +141,8 @@ class ventanaDetrended(QWidget):
                 plt.close()
 
             plt.subplot(121)
-            p1, p2, p3 = plt.plot(self.rangoQCodificante, self.resultadosCodificante, 'b-',
-                                  self.rangoQNoCodificante, self.resultadosNoCodificante, 'r-',
+            p1, p2, p3 = plt.plot(self.rangoQCodificante, self.resultadosCodificante, 'r-',
+                                  self.rangoQNoCodificante, self.resultadosNoCodificante, 'b-',
                                   self.rangoQCompleta, self.resultadosCompleta, 'g-')
 
             # Añado leyenda, tamaño de letra 10, en esquina superior derecha
@@ -157,8 +157,8 @@ class ventanaDetrended(QWidget):
                         self.nombreArchivo + "_hqvq.jpg")
 
             plt.subplot(122)
-            p1, p2, p3 = plt.plot(self.rangoFCodificantes, self.resultadosFCodificantes, 'b-',
-                                  self.rangoFNoCodificantes, self.resultadosFNoCodificantes, 'r-',
+            p1, p2, p3 = plt.plot(self.rangoFCodificantes, self.resultadosFCodificantes, 'r-',
+                                  self.rangoFNoCodificantes, self.resultadosFNoCodificantes, 'b-',
                                   self.rangoFCompletos, self.resultadosFCompletos, 'g-')
 
             # Añado leyenda, tamaño de letra 10, en esquina superior derecha
