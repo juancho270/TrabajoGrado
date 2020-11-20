@@ -109,7 +109,7 @@ class ventanaDetrended(QWidget):
                 plt.xlabel('q')
                 plt.ylabel('H(q)')
                 plt.title('q vs H(q)')
-                plt.plot(rangoQ, resultados, 'b-', label="Completa")
+                plt.plot(rangoQ, resultados, 'b-', label="CC")
                 plt.legend(
                     prop={'size': 10}, loc='upper right')
                 plt.savefig("Imagenes/Graficas/Completa/" +
@@ -119,7 +119,7 @@ class ventanaDetrended(QWidget):
                 plt.xlabel('q')
                 plt.ylabel('t(q)')
                 plt.title('q vs t(q)')
-                plt.plot(rangoQ, self.tqCompleta, "b-", label="Completa")
+                plt.plot(rangoQ, self.tqCompleta, "b-", label="CC")
                 plt.legend(
                     prop={'size': 10}, loc='lower right')
                 plt.savefig("Imagenes/Graficas/qvstq/Completa/" +
@@ -130,10 +130,10 @@ class ventanaDetrended(QWidget):
                 plt.ylabel('t(q)')
                 plt.title('q vs t(q)')
 
-                plt.plot(rangoQ, self.tqCodificante, 'b-', label="Codificante")
+                plt.plot(rangoQ, self.tqCodificante, 'b-', label="SC")
                 plt.plot(rangoQ, self.tqNoCodificante,
                          'r-', label="NoCodificante")
-                plt.plot(rangoQ, self.tqCompleta, 'g-', label="Completa")
+                plt.plot(rangoQ, self.tqCompleta, 'g-', label="CC")
                 plt.legend(
                     prop={'size': 10}, loc='lower right')
                 plt.savefig("Imagenes/Graficas/qvstq/Todas/" +
@@ -146,7 +146,7 @@ class ventanaDetrended(QWidget):
                                   self.rangoQCompleta, self.resultadosCompleta, 'g-')
 
             # Añado leyenda, tamaño de letra 10, en esquina superior derecha
-            plt.legend(('Codificante', 'No Codificante', 'Completa'),
+            plt.legend(('SC', 'SNC', 'CC'),
                        prop={'size': 10}, loc='upper right')
 
             plt.xlabel('q')
@@ -162,7 +162,7 @@ class ventanaDetrended(QWidget):
                                   self.rangoFCompletos, self.resultadosFCompletos, 'g-')
 
             # Añado leyenda, tamaño de letra 10, en esquina superior derecha
-            plt.legend(('Codificante', 'No Codificante', 'Completa'),
+            plt.legend(('SC', 'SNC', 'CC'),
                        prop={'size': 10}, loc='upper right')
 
             plt.xlabel('α')
@@ -245,7 +245,7 @@ class ventanaDetrended(QWidget):
             plt.ylabel('t(q)')
             plt.title('q vs t(q)')
             plt.plot(rangoQ, self.tqNoCodificante,
-                     "b-", label="No Codificante")
+                     "b-", label="SNC")
             plt.legend(prop={'size': 10}, loc='lower right')
             plt.savefig("Imagenes/Graficas/qvstq/NoCodificante/" +
                         self.nombreArchivo + "_tq_NoCodificante")
@@ -255,7 +255,7 @@ class ventanaDetrended(QWidget):
             plt.ylabel('H(q)')
             plt.title('q vs H(q)')
 
-            plt.plot(rangoQ, resultados, 'b-', label="No Codificante")
+            plt.plot(rangoQ, resultados, 'b-', label="SNC")
             plt.legend(
                 prop={'size': 10}, loc='upper right')
             plt.savefig("Imagenes/Graficas/NoCodificante/" +
@@ -334,7 +334,7 @@ class ventanaDetrended(QWidget):
             plt.xlabel('q')
             plt.ylabel('t(q)')
             plt.title('q vs t(q)')
-            plt.plot(rangoQ, self.tqCodificante, "b-", label="Codificante")
+            plt.plot(rangoQ, self.tqCodificante, "b-", label="SC")
             plt.legend(
                 prop={'size': 10}, loc='lower right')
             plt.savefig("Imagenes/Graficas/qvstq/Codificante/" +
@@ -345,7 +345,7 @@ class ventanaDetrended(QWidget):
             plt.xlabel('q')
             plt.ylabel('H(q)')
             plt.title('q vs H(q)')
-            plt.plot(rangoQ, resultados, 'b-', label="Codificante")
+            plt.plot(rangoQ, resultados, 'b-', label="SC")
             plt.legend(
                 prop={'size': 10}, loc='upper right')
             plt.savefig("Imagenes/Graficas/Codificante/" +

@@ -129,18 +129,29 @@ class ventanaDetrended2D(QWidget):
             fluctuacionesSeqCompleta = detrended2D.funcionFluctuacion(
                 rangoQ, funcionfSeqComplet)
 
-            hCodificante, fCodificante = detrended2D.graficarGuardar(
+            hCodificante, fCodificante, tqCodificante = detrended2D.graficarGuardar(
                 fluctuacionesCodificantes, rangoQ, "Codificante/" + self.nombreArchivo + "_codificante")
-            hNoCodificante, fNoCodificante = detrended2D.graficarGuardar(
+            hNoCodificante, fNoCodificante, tqNoCodificante = detrended2D.graficarGuardar(
                 fluctuacionesNoCodificantes, rangoQ, "NoCodificante/" + self.nombreArchivo + "_noCodificante")
-            hSeqComplete, fSeqComplete = detrended2D.graficarGuardar(
+            hSeqComplete, fSeqComplete, tqSeqComplete = detrended2D.graficarGuardar(
                 fluctuacionesSeqCompleta, rangoQ, "SecuenciaCompleta/" + self.nombreArchivo + "_seqCompleta")
             # Figura con una fila y tres columnas, activo primer subgráfico
+            plt.plot(rangoQ, tqCodificante)
+            plt.plot(rangoQ, tqNoCodificante)
+            plt.plot(rangoQ, tqSeqComplete)
+            plt.legend(('SC', 'SNC', 'CC'),
+                       prop={'size': 10}, loc='upper right')
+            plt.xlabel('q')
+            plt.ylabel('t(q)')
+            plt.title('q vs t(q)')
+            plt.savefig("Detrended2D/graficah(q)vsq/qvstq/SecuenciaCompleta" +
+                        self.nombreArchivo + "_secuenciaCompleta.jpg")
+            plt.close()
             plt.subplot(121)
             p1, p2, p3 = plot(rangoQ, hCodificante, 'r-',
                               rangoQ, hNoCodificante, 'b-', rangoQ, hSeqComplete, 'g-')
             # Etiqueta del eje Y, que es común para todas
-            plt.legend(('Left', 'Right', 'Center'),
+            plt.legend(('SC', 'SNC', 'CC'),
                        prop={'size': 10}, loc='upper right')
 
             plt.xlabel('q')
@@ -159,7 +170,7 @@ class ventanaDetrended2D(QWidget):
                               rangoQ2, fNoCodificante, 'r-', rangoQ2, fSeqComplete, 'g-')
             # Etiqueta del eje X, que es común para todas
             # Etiqueta del eje Y, que es común para todas
-            plt.legend(('Left', 'Right', 'Center'),
+            plt.legend(('SC', 'SNC', 'CC'),
                        prop={'size': 10}, loc='upper right')
 
             plt.xlabel('α')

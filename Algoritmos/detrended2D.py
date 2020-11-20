@@ -153,7 +153,7 @@ class Detrended2D:
                     nombre + "_espectro.jpg")
         plt.close()
 
-        return valoresFinales, valoresFinales2
+        return valoresFinales, valoresFinales2, tq
 
 
 detrended2D = Detrended2D()
