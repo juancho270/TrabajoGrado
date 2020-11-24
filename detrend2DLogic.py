@@ -30,6 +30,9 @@ class ventanaDetrended2D(QWidget):
         self.resultadosNoCodificante = ''
         self.graficaCodificante = False
         self.graficaNoCodificante = False
+        self.DeltaCodificante = "No Caloculado"
+        self.DeltaNoCodificante = "No Calculado"
+        self.DeltaCompleto = "No calculado"
         # self.resize(pixmapNoCod.width(),pixmapNoCod.height())
 
     def imprimir(self):
@@ -129,12 +132,15 @@ class ventanaDetrended2D(QWidget):
             fluctuacionesSeqCompleta = detrended2D.funcionFluctuacion(
                 rangoQ, funcionfSeqComplet)
 
-            hCodificante, fCodificante, tqCodificante = detrended2D.graficarGuardar(
+            hCodificante, fCodificante, tqCodificante, self.DeltaCodificante = detrended2D.graficarGuardar(
                 fluctuacionesCodificantes, rangoQ, "Codificante/" + self.nombreArchivo + "_codificante")
-            hNoCodificante, fNoCodificante, tqNoCodificante = detrended2D.graficarGuardar(
+            hNoCodificante, fNoCodificante, tqNoCodificante, self.DeltaNoCodificante = detrended2D.graficarGuardar(
                 fluctuacionesNoCodificantes, rangoQ, "NoCodificante/" + self.nombreArchivo + "_noCodificante")
-            hSeqComplete, fSeqComplete, tqSeqComplete = detrended2D.graficarGuardar(
+            hSeqComplete, fSeqComplete, tqSeqComplete, self.DeltaCompleto = detrended2D.graficarGuardar(
                 fluctuacionesSeqCompleta, rangoQ, "SecuenciaCompleta/" + self.nombreArchivo + "_seqCompleta")
+            self.ui.DeltaCod.setText(self.DeltaCodificante)
+            self.ui.DeltaNoCod.setText(self.DeltaNoCodificante)
+            self.ui.DeltaCom.setText(self.DeltaCompleto)
             # Figura con una fila y tres columnas, activo primer subgráfico
             plt.plot(rangoQ, tqCodificante)
             plt.plot(rangoQ, tqNoCodificante)
@@ -235,9 +241,9 @@ class ventanaDetrended2D(QWidget):
                 sumAcomulada)
             funcionf = detrended2D.funcionf(sumAcomulada, covarianza)
             fluctuaciones = detrended2D.funcionFluctuacion(rangoQ, funcionf)
-            hNoCodificante, fNoCodificante, tqNoCodificante = detrended2D.graficarGuardar(
+            hNoCodificante, fNoCodificante, tqNoCodificante, self.DeltaNoCodificante = detrended2D.graficarGuardar(
                 fluctuaciones, rangoQ, "NoCodificante/" + self.nombreArchivo + "_noCodificante")
-
+            self.ui.DeltaNoCod.setText(self.DeltaNoCodificante)
             # Figura con una fila y tres columnas, activo primer subgráfico
             plt.subplot(121)
             p1,  = plot(rangoQ, hNoCodificante, 'r-')
@@ -317,8 +323,9 @@ class ventanaDetrended2D(QWidget):
                 sumAcomulada)
             funcionf = detrended2D.funcionf(sumAcomulada, covarianza)
             fluctuaciones = detrended2D.funcionFluctuacion(rangoQ, funcionf)
-            hCodificante, fCodificante, tqCodificante = detrended2D.graficarGuardar(
+            hCodificante, fCodificante, tqCodificante, self.DeltaCodificante = detrended2D.graficarGuardar(
                 fluctuaciones, rangoQ, "Codificante/" + self.nombreArchivo + "_Codificante")
+            self.ui.DeltaCod.setText(self.DeltaCodificante)
 
             # Figura con una fila y tres columnas, activo primer subgráfico
             plt.subplot(121)

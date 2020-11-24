@@ -1,0 +1,22 @@
+Para el valor q = -10, el valor Hq es: 2.60897506327
+Para el valor q = -9, el valor Hq es: 2.58672647345
+Para el valor q = -8, el valor Hq es: 2.55970098082
+Para el valor q = -7, el valor Hq es: 2.52625989199
+Para el valor q = -6, el valor Hq es: 2.48398274053
+Para el valor q = -5, el valor Hq es: 2.42926630027
+Para el valor q = -4, el valor Hq es: 2.35710435635
+Para el valor q = -3, el valor Hq es: 2.26334746385
+Para el valor q = -2, el valor Hq es: 2.15638588352
+Para el valor q = -1, el valor Hq es: 2.06436305931
+Para el valor q = 0, el valor Hq es: 1.99975903551
+Para el valor q = 1, el valor Hq es: 1.94973612951
+Para el valor q = 2, el valor Hq es: 1.90541838751
+Para el valor q = 3, el valor Hq es: 1.86461119956
+Para el valor q = 4, el valor Hq es: 1.82760940628
+Para el valor q = 5, el valor Hq es: 1.79504599333
+Para el valor q = 6, el valor Hq es: 1.7670203904
+Para el valor q = 7, el valor Hq es: 1.74313210491
+Para el valor q = 8, el valor Hq es: 1.72279285504
+Para el valor q = 9, el valor Hq es: 1.70542882566
+Para el valor q = 10, el valor Hq es: 1.69054709498
+El valor delta de Q es:0.9184279682899998

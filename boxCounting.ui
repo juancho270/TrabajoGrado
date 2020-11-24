@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>376</width>
-    <height>205</height>
+    <height>310</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="btnCodificate">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>90</y>
+     <x>50</x>
+     <y>200</y>
      <width>131</width>
      <height>31</height>
     </rect>
@@ -34,8 +34,8 @@
   <widget class="QPushButton" name="btnNoCodificante">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>90</y>
+     <x>210</x>
+     <y>200</y>
      <width>151</width>
      <height>31</height>
     </rect>
@@ -52,8 +52,8 @@
   <widget class="QPushButton" name="btnAmbos">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>140</y>
+     <x>140</x>
+     <y>250</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -129,6 +129,84 @@
      <string>-20 a 20</string>
     </property>
    </item>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>120</y>
+     <width>151</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delta Dq No Codificante:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="DeltaCod">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>90</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>No Calculado</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="DeltaNoCod">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>119</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>No Calculado</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="DeltaCom">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>150</y>
+     <width>91</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>No Calculado</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>90</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delta Dq Codificante:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>150</y>
+     <width>141</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delta Dq Completa:</string>
+   </property>
   </widget>
  </widget>
  <resources/>

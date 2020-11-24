@@ -126,8 +126,10 @@ class Detrended2D:
         for i in range(0, q.shape[0]):
             file.write(
                 "\n Para q = " + str(q[i]) + ",el valor DFA es:" + str(valoresFinales[i]))
+        deltaDq = str(round(max(valoresFinales) - min(valoresFinales), 3))
         file.write("\n El delta Q es: " +
                    str(max(valoresFinales) - min(valoresFinales)))
+
         file.close()
         valoresFinales2 = np.zeros(q.shape[0] - 1)
         tq = np.zeros(q.shape)
@@ -153,7 +155,7 @@ class Detrended2D:
                     nombre + "_espectro.jpg")
         plt.close()
 
-        return valoresFinales, valoresFinales2, tq
+        return valoresFinales, valoresFinales2, tq, deltaDq
 
 
 detrended2D = Detrended2D()

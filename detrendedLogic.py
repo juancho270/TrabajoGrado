@@ -8,9 +8,11 @@ from archivo import archivo
 from archivo import *
 import numpy as np
 
-#Manejador de eventos para la vsta de detrended
+# Manejador de eventos para la vsta de detrended
+
+
 class ventanaDetrended(QWidget):
-    #inicializador y atributos de la clase
+    # inicializador y atributos de la clase
     def __init__(self, parent, nombre):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_detrend()
@@ -38,9 +40,12 @@ class ventanaDetrended(QWidget):
         self.tqCompleta = ''
         self.graficaCodificante = False
         self.graficaNoCodificante = False
+        self.DeltaCodificante = "No Caloculado"
+        self.DeltaNoCodificante = "No Calculado"
+        self.DeltaCompleto = "No calculado"
 
+    # Funcion encargada de validar los parametros de entrada y realizar las graficas de las secuencaas juntas
 
-    #Funcion encargada de validar los parametros de entrada y realizar las graficas de las secuencaas juntas
     def analsisAmbas(self):
         if self.graficaCodificante and self.graficaNoCodificante:
             # array de valores a representar
@@ -79,14 +84,14 @@ class ventanaDetrended(QWidget):
                     rango1 = np.arange(-20.0, -0.5, distancia)
                     rango2 = np.arange(0.5, 20.0 + distancia, distancia)
                     rangoQ = np.concatenate((rango1, rango2), axis=0)
-                #Se abre el archivo con la secuencia
+                # Se abre el archivo con la secuencia
                 data = detrended.lineaTiempo("ArchivosGenerados/Secuencias/Completa/" +
                                              self.nombreArchivo + "_completa.fasta")
-                #Tiempo de la secuencia
+                # Tiempo de la secuencia
                 time = detrended.transformada(data)
-                #Divsiones
+                # Divsiones
                 lag = detrended.divisiones(time, escalaSeleccionada)
-                #dq
+                # dq
                 resultados = np.zeros(rangoQ.size)
                 contenido = ''
                 for i in range(0, rangoQ.size):
@@ -99,6 +104,9 @@ class ventanaDetrended(QWidget):
                 archivo = open("ArchivosGenerados/Resultados/Completa/" +
                                self.nombreArchivo + "_completa.txt", "w")
                 archivo.write(contenido)
+                self.DeltaCompleto = str(
+                    round(max(resultados) - min(resultados), 3))
+                self.ui.DeltaCom.setText(self.DeltaCompleto)
                 archivo.write("\n El valor del delta Q es: " +
                               str(max(resultados) - min(resultados)))
                 archivo.close()
@@ -234,6 +242,9 @@ class ventanaDetrended(QWidget):
             archivo = open("ArchivosGenerados/Resultados/NoCodificante/" +
                            self.nombreArchivo + "_noCodificante.txt", "w")
             archivo.write(contenido)
+            self.DeltaNoCodificante = str(
+                round(max(resultados) - min(resultados), 3))
+            self.ui.DeltaNoCod.setText(self.DeltaNoCodificante)
             archivo.write("\n El valor del delta Q es: " +
                           str(max(resultados) - min(resultados)))
             archivo.close()
@@ -324,6 +335,9 @@ class ventanaDetrended(QWidget):
             archivo = open("ArchivosGenerados/Resultados/Codificante/" +
                            self.nombreArchivo + "_codificante.txt", "w")
             archivo.write(contenido)
+            self.DeltaCodificante = str(
+                round(max(resultados) - min(resultados), 3))
+            self.ui.DeltaCod.setText(self.DeltaCodificante)
             archivo.write("\n El valor del delta Q es: " +
                           str(max(resultados) - min(resultados)))
             archivo.close()
